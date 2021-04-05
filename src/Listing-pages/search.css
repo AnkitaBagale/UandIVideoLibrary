@@ -1,0 +1,41 @@
+.text-container{
+    width: calc(100% - 2rem);
+}
+.badge-dot-to-separate{
+    margin: 0 0.2rem;
+}
+.video-info{
+    display: flex;
+}
+.text-container{
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+    padding-right: 0;
+}
+.avatar{
+    margin: 0.625rem 0 1rem;
+}
+.margin-right-4px{
+    margin-right: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .grid-4-column-layout{
+        grid-template-columns: 1fr;
+    }
+    .card-vertical{
+        max-width: 100%;
+    }
+    .card-img{
+        max-height: 200px;
+    }
+    
+    .avatar{
+        margin: 0.625rem 0 1rem 1rem;
+    }
+    .text-container{
+        width: calc(100% - 3rem);
+        padding: 1rem;
+    }
+}

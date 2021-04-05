@@ -1,0 +1,66 @@
+
+.link-no-style.primary-text-color{
+    color: var(--primary-color);
+}
+.nav-bar{
+    font-weight: 400;
+}
+.search-bar{
+    border-radius: 1.5rem;
+}
+.language-icon{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    transition: transform 200ms ease;
+}
+.dropdown-list-container{
+    position: relative;
+}
+.dropdown-list{
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    background-color: #edecee;
+    border-radius: 0.3rem;
+    display: none;
+    padding: 0.7rem 0;
+}
+
+
+.language-icon img{
+    width: 2rem;
+    height: 2rem;
+}
+
+.dropdown-item{
+    padding: 0.3rem 1.5rem;
+}
+
+.dropdown-item:hover{
+    background-color: #e6e6e6;
+}
+
+.dropdown-item:not(:last-child){
+    margin-bottom: 0.3rem;
+}
+
+@media screen and (min-width: 1025px) {
+    .search-bar{
+        border: 1px solid;
+    }
+    .search-bar-section{
+        max-width: 400px;
+        width: 100%;
+    }
+   
+}
+
+@media screen and (max-width: 1024px) {
+    .search-bar-btn {
+        font-size: 1.3rem;
+    }
+    
+    .nav-bar{
+        min-height: 5vh;
+    }  
+}

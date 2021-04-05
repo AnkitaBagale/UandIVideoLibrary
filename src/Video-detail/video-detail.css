@@ -1,0 +1,79 @@
+.video-container{
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+    height: 360px;
+}
+.video-tutor-details .avatar{
+    margin: 0 1rem 0 0;
+}
+.video-tutor-details{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.filter-divider-line{
+    background-color: #dedddf;
+    border: 0.5px solid #dedddf;
+}
+
+.stacked-list li{
+    border: none;
+}
+
+.playlist-container{
+    padding: 0.5rem 1rem 0.5rem 0;
+    background-color: #edecee;
+    width: fit-content;
+    max-width: calc(100vw - 1rem);
+    position: absolute;
+    top: 1.5rem;
+    left:0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-to-playlist-cta-container{
+    position: relative;
+}
+
+.playlist-container .btn{
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.scroll-bar-styled{
+    overflow: auto;
+}
+
+.scroll-bar-styled::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.scroll-bar-styled::-webkit-scrollbar-thumb {
+background-color: rgb(216, 215, 216);
+}
+
+.scroll-bar-styled::-webkit-scrollbar-track {
+background: #edebef;
+}
+.video-details-section .CTA-Container > .btn{
+    font-size: 1.5rem;
+}
+.add-to-playlist-cta-container > .btn {
+    font-size: 1.5rem;
+}
+.add-new-playlist-input{
+    padding: 1rem 0 1rem 1rem;
+}
+
+@media screen and (max-width:768px) {
+    .video-container{
+        height: 250px;
+    }
+    .video-tutor-details .avatar{
+        margin: 0 1rem 0 0;
+    }
+    
+}
