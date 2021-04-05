@@ -5,7 +5,7 @@ import { VideoCardHorizontal } from "./Video-card-horizontal";
 
 export const WatchLater = () =>{
  
-    const { state, dispatch } = useStateContext();
+    const { state } = useStateContext();
 
     return (
         <>

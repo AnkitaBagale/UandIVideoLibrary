@@ -15,7 +15,7 @@ export const VideoCard = ({video}) =>{
         />
       </div>
       <div className = "video-info">
-        <img className="avatar avatar-xs-size" src={video.tutor.avatar} />
+        <img className="avatar avatar-xs-size" src={video.tutor.avatar} alt="video" />
 
         <div className="text-container">
             <div className="text-container-title">

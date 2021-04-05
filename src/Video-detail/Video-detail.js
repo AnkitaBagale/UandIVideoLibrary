@@ -13,8 +13,6 @@ export const VideoDetail = () =>{
     let match = useParams();
     
     let videoDetails = getVideoDetail(state.videos, match.id);
-    
-    const [video, setVideo] = useState({...videoDetails});
 
     const playerRef = useRef(null);
 
@@ -23,14 +21,14 @@ export const VideoDetail = () =>{
             <div className="video-container">
                 <ReactPlayer
                 ref={playerRef}
-                url={`https://www.youtube.com/embed/${video.id}`}
+                url={`https://www.youtube.com/embed/${videoDetails.id}`}
                 controls={true}
                 width={"100%"}
                 height={"100%"}
-                onStart = {()=>{dispatch({type:"ADD_TO_HISTORY", payload: video})}}                     
+                onStart = {()=>{dispatch({type:"ADD_TO_HISTORY", payload: videoDetails})}}                     
                 />
-                <VideoDetailsSection video = {video} />
-                <Notes id={video.id} />
+                <VideoDetailsSection video = {videoDetails} />
+                <Notes id={videoDetails.id} />
             </div>
         </>
     )

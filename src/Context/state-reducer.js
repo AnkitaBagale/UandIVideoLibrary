@@ -35,11 +35,7 @@ export const stateReducer = (state, {type, payload}) =>{
             return {...state, watchHistory: []}
         }
 
-        case "CREATE_PLAYLIST" : {
-            
-        }
-
         default:
-            return state
+            return state;
     }
 }

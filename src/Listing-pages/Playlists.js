@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useStateContext } from "../Context";
-import { Link, Route, useParams, Routes, Outlet } from "react-router-dom";
+import { Link, useParams, Outlet } from "react-router-dom";
 import "./playlists.css";
 import { VideoCardHorizontal } from "./Video-card-horizontal";
 
 
 export const Playlists = () =>{
-    const { state, dispatch } =  useStateContext();
+    const { state } =  useStateContext();
     const [ sidebarOpen, setSidebarOpen ] = useState(false);
 
     return (
