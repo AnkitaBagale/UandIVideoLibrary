@@ -12,6 +12,10 @@
     return array.filter((item)=> item.videoId === videoId)
  }
 
+ export const getPlaylistData = (array, playlistId) => {
+   return array.find((item)=> item.id === playlistId)
+}
+
  export const isAlreadyAdded = (array, videoId) =>{
     for(let i=0; i<array.length; i++){
         if(array[i].id === videoId){

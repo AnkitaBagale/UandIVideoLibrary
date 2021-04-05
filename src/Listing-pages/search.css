@@ -15,8 +15,34 @@
 .avatar{
     margin: 0.625rem 0 1rem;
 }
+
 .margin-right-4px{
     margin-right: 0.25rem;
+}
+
+.category-list-item-bg{
+    height: 6.8rem;
+    background-color: var(--primary-color);
+}
+
+.category-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    color: white;
+    width: 100%;
+    max-width: 56.5rem;
+    margin: auto;
+    box-sizing: border-box;
+}
+.btn-rounded-corners{
+    border-radius: 1.5rem;
+}
+.CTA-Container{
+    width: 100%;
+    max-width: 56.5rem;
+    margin: auto;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
@@ -37,5 +63,9 @@
     .text-container{
         width: calc(100% - 3rem);
         padding: 1rem;
+    }
+
+    .category-list{
+        grid-template-columns: 1fr 1fr;
     }
 }
