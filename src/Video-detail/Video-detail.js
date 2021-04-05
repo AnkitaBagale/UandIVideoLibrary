@@ -61,7 +61,7 @@ const VideoDetailsSection = ({video}) =>{
             </div>
             <div className="filter-divider-line"></div>
             <div className = "video-tutor-details">
-                <img className="avatar avatar-xs-size" src={video.tutor.avatar} />
+                <img className="avatar avatar-xs-size" src={video.tutor.avatar} alt="video" />
 
                 <div className="video-tutor-name">
                     <p className="body-cp-md secondary-text-color text-light-weight">
