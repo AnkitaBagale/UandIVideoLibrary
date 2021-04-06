@@ -5,12 +5,12 @@ import { VideoCardHorizontal } from "./Video-card-horizontal";
 
 export const WatchLater = () =>{
  
-    const { state } = useStateContext();
+    const { state:{watchLater} } = useStateContext();
 
     return (
         <>
         <ul className="stacked-list">
-            { state.watchLater.map(
+            { watchLater.map(
                 (video)=> 
                 <li key={video.id}>  
                     <Link className="link-no-style" to={`/search/${video.id}`}>

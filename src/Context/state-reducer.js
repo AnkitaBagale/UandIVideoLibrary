@@ -15,8 +15,16 @@ export const stateReducer = (state, {type, payload}) =>{
 
                     }) 
                 }
-            return state;
+            else{
+                return { ...state, playlists : state.playlists.map(
+                    (playlist)=> {if(payload.playlistId !== playlist.id) return playlist
+                    return {...playlist, videoList: playlist.videoList.filter((video)=> video.id!==payload.video.id)}
+                    })
+                }
+            } 
+
         }
+
         case "ADD_NEW_PLAYLIST" : {
             return { ...state, playlists : addToArray(state.playlists, {...payload.playlist, videoList: [payload.video] })}
         }
@@ -31,8 +39,24 @@ export const stateReducer = (state, {type, payload}) =>{
                     : {...state, watchLater: addToArray(state.watchLater, payload)}
         }
 
+        case "ADD_OR_REMOVE_TO_LIKED_VIDEOS" : {
+            return isAlreadyAdded(state.likedVideos, payload.id)
+                    ? {...state, likedVideos: removeFromArray(state.likedVideos, payload.id)}
+                    : {...state, likedVideos: addToArray(state.likedVideos, payload)}
+        }
+
         case "CLEAR_HISTORY" : {
             return {...state, watchHistory: []}
+        }
+        case "ADD_NOTE" : {
+            return {...state, notes: addToArray(state.notes, payload)}
+        }
+        case "EDIT_NOTE" : {
+            return {...state, notes: state.notes.map((note)=> note.id!==payload.id ? note : {...note, title: payload.title, description: payload.description} )}
+        }
+        case "DELETE_NOTE" : {
+            return {...state, notes: state.notes.filter((note)=>note.id!==payload)}
+            
         }
 
         default:

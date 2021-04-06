@@ -6,10 +6,12 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({children})=>{
     const initialState = {playlists: [
+
                                 {
-                                    id: 1,
+                                    id: "1",
                                     title: "My Playlist",
                                     desc: "My own curation",
+                                    thumbnail: "",
                                     videoList : [
                                         {id: "ewMksAbgdBI",
                                         name: "Learn To Draw #01",
@@ -21,10 +23,12 @@ export const StateContextProvider = ({children})=>{
                                         }
                                     ]
                                 },
+
                                 {
-                                    id: 2,
+                                    id: "2",
                                     title: "Sketching Playlist",
                                     desc: "My own curation 2",
+                                    thumbnail: "",
                                     videoList : [
                                         {id: "jopx5u5QVpo",
                                         name: "Learn To Draw #01",
@@ -35,22 +39,24 @@ export const StateContextProvider = ({children})=>{
                                         tutor: {id:1, name: "Sketchbook by Abhishek", avatar: "https://i.postimg.cc/fRf3jmN7/post-icon.png"}
                                         }
                                     ]
-                                }
+                                } 
+                                
                             ], 
                           videos:videos, 
-                          watchHistory: [], 
-                          watchLater: [],
+                          watchLater:[],
+                          watchHistory: [],
+                          likedVideos: [],
                           notes: [
                                 {   id: 1,
                                     videoId: "ewMksAbgdBI",
                                     title: "stuck here",
-                                    desc: "dint understand how to shade",
+                                    description: "dint understand how to shade",
                                     time: "23"
                                 },
                                 {   id: 2,
                                     videoId: "ewMksAbgdBI",
                                     title: "stuck here",
-                                    desc: "dint understand how to shade",
+                                    description: "dint understand how to shade",
                                     time: "23"
                                 }
                             ]

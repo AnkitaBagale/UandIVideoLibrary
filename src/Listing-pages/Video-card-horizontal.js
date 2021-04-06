@@ -5,7 +5,7 @@ export const VideoCardHorizontal = ({video}) =>{
     const renderDate = (date) =>{
        return (
         <time className="body-cp-sm text-light-weight">
-            <span className="margin-right-4px"><i className="far fa-clock"></i></span>
+            <span className="padding-right-4px"><i className="far fa-clock"></i></span>
             {date.toDateString()}
         </time>
      ) 

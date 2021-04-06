@@ -18,9 +18,11 @@ export function App() {
   return (
     <Router>
       
-      <div className="App">
-        <Nav />
-        <div className="app-container">
+      <div className="App page-grid-layout">
+        <div className="grid-item-nav">
+          <Nav />
+        </div>
+        <div className="app-container grid-item-main">
           
           <Routes>
             <Route path="/" element={<HomePage />} />              
@@ -41,7 +43,10 @@ export function App() {
 
         </div>
         
-        {/* <Footer /> */}
+        <div className="grid-item-footer">
+          {/* <Footer /> */}
+        </div>
+        
         
       </div>
     </Router>

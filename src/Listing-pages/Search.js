@@ -16,26 +16,6 @@ export const Search = () =>{
 
     return (
         <>
-            {/* <div className="category-list grid-right-of-filter padding-around-1rem">
-                {
-                    types.map((type)=>{
-                        
-                       return <div
-                  key={type}
-                  className="card-vertical card-hover"
-                >
-                  <div className="overlay-container">
-                    <div className="image-container category-list-item-bg">                    
-                    </div>
-                  </div>
-                  <div className="overlay-text text-center">
-                    <div className="h6">{type}</div>
-                  </div>
-                </div>
-                    
-                    })
-                }
-            </div> */}
 
             <div className="CTA-Container padding-around-1rem">
                 {types.map((type)=>

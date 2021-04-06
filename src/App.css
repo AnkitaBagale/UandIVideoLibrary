@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .logo-title{
   font-size: 2rem;
   font-family: 'Roboto Slab', serif;
@@ -29,3 +33,27 @@
 .grid-4-column-layout{
   box-sizing: border-box;
 }
+.border-1px-square {
+  border: 1px solid #e9e9eb;
+}
+.width-100pc{
+  width:100%;
+}
+.margin-bottom-0{
+  margin-bottom: 0;
+}
+.grid-item-nav{
+  grid-area: nav;
+}
+.grid-item-footer{
+  grid-area: footer;
+}
+.grid-item-main{
+  grid-area: main;
+}
+
+/* .page-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  grid-area: "nav nav";
+} */
