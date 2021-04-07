@@ -185,7 +185,7 @@ const AddNewNote = ({note = noteDefaultState, setEditMode, playerRef, videoId}) 
 
     const [noteState, noteDispatch] = useReducer(noteReducer, note);
 
-    const {state, dispatch} = useStateContext();
+    const {dispatch} = useStateContext();
     console.log({note});
     console.log({noteState});
 
