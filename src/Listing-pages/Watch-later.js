@@ -9,11 +9,14 @@ export const WatchLater = () =>{
 
     return (
         <>
+        <h1 className="h3 text-center margin-top-3rem">Saved Videos</h1>
         <ul className="stacked-list">
-            { watchLater.map(
+            { watchLater.length===0
+                ? (<li className="text-center text-regular-weight">No videos saved</li>) 
+                :watchLater.map(
                 (video)=> 
                 <li key={video.id}>  
-                    <Link className="link-no-style" to={`/search/${video.id}`}>
+                    <Link className="link-no-style" to={`/explore/${video.id}`}>
                         <VideoCardHorizontal video={video}/>
                     </Link>
                 </li>)

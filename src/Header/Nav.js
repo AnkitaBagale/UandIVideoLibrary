@@ -47,28 +47,26 @@ export const Nav = () => {
                 </Link>
 
                 <li className="list-inline-item">
-                    <NavLink to="/explore" activeClassName="primary-text-color" className="link-no-style">
+                    <NavLink end to="/explore" activeClassName="primary-text-color" className="link-no-style">
                         Explore
                     </NavLink>
                 </li>
 
-
                 <li className="list-inline-item">
-                    <NavLink to="/playlists" activeClassName="primary-text-color" className="link-no-style">
+                    <NavLink to="/explore/playlists" activeClassName="primary-text-color" className="link-no-style">
                         My Playlists
                     </NavLink>
                 </li>
-                
 
                 <li className="list-inline-item">
-                    <NavLink to="/saved" activeClassName="primary-text-color" className="link-no-style">
+                    <NavLink to="/explore/saved" activeClassName="primary-text-color" className="link-no-style">
                         Watch Later
                     </NavLink>
                 </li>
 
                 <li className="list-inline-item">
-                    <NavLink to="/history" activeClassName="primary-text-color" className="link-no-style">
-                        History
+                    <NavLink to="/explore/history" activeClassName="primary-text-color" className="link-no-style">
+                        Learning History
                     </NavLink>
                 </li> 
 

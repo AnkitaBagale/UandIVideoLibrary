@@ -6,7 +6,7 @@
 .max-width-do-not-stretch{
     max-width: 58.5rem;
     width: 100%;
-    margin: auto;
+    margin: 2rem auto;
 }
 .video-tutor-details .avatar{
     margin: 0 1rem 0 0;
@@ -21,18 +21,19 @@
     background-color: #dedddf;
     border: 0.5px solid #dedddf;
 }
+.primary-divider-line{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0.5px solid var(--primary-color);
+}
 
 .stacked-list li{
     border: none;
 }
-.form-field{
-    border: none;
-    /* border-bottom: 1px solid #d4d5d9; */
-}
 
 .playlist-container{
     padding: 0.5rem 1rem 0.5rem 0;
-    background-color: #edecee;
+    background-color: var(--bg-light-pink);
     width: fit-content;
     max-width: calc(100vw - 1rem);
     position: absolute;
@@ -49,6 +50,9 @@
 .playlist-container .btn{
     margin-top: 0;
     white-space: nowrap;
+}
+.stacked-list li.margin-0-list-item{
+    margin-bottom: 0;
 }
 
 .scroll-bar-styled{
@@ -79,15 +83,20 @@ background: #edebef;
 .notes-cta-container .btn{
     margin: 0;
     padding: 0.5rem;
+    font-size: 0.8rem;
 }
 
 .video-details{
     width: 70%;
-    padding: 1rem 1rem 1rem 2rem;
+    padding: 1rem 3rem 1rem 0rem;
     box-sizing: border-box;
 }
 .notes-section{
     width: 30%;
+    height: 390px;
+    margin-top: 2rem;
+    overflow-y: auto;
+    padding-right: 0.25rem;
 }
 .note-text-container time, .note-text-container input{
     display: block;

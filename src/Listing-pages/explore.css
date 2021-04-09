@@ -24,6 +24,10 @@
     height: 6.8rem;
     background-color: var(--primary-color);
 }
+.category-link-active{
+    background-color: var(--primary-color);
+    color: white;
+}
 
 .category-list{
     display: grid;
@@ -44,7 +48,9 @@
     margin: auto;
     box-sizing: border-box;
 }
-
+.content-area-beside-sidebar{
+    width: calc(100% - 6.25rem);
+}
 @media screen and (max-width: 768px) {
     
     .grid-4-column-layout{

@@ -1,10 +1,10 @@
-import "./search.css"
+import "./explore.css"
 import { Link } from "react-router-dom";
 
 export const VideoCard = ({video}) =>{
 
     return (
-    <Link to={`/search/${video.id}`} className="link-no-style" >
+    <Link to={`/explore/${video.id}`} className="link-no-style" >
     <div className="card-vertical">
 
       <div className="image-container">

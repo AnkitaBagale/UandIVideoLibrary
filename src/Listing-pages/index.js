@@ -1,3 +1,4 @@
-export { Search } from "./Search";
+export { Explore, Search } from "./Explore";
 export { History } from "./History";
-export { Playlists, PlaylistMainContent, AllPlaylistContent } from "./Playlists";
+export { PlaylistMainContent, AllPlaylistContent } from "./Playlists";
+export { LikedVideos } from "./Liked-videos";

@@ -57,7 +57,7 @@ export const StateContextProvider = ({children})=>{
                                     videoId: "ewMksAbgdBI",
                                     title: "stuck here",
                                     description: "dint understand how to shade",
-                                    time: "23"
+                                    time: "70"
                                 }
                             ]
                           }

@@ -6,7 +6,7 @@ export const Footer = () => {
       <a href="#" className="btn btn-float-action" id="back-to-top">
         <i className="fas fa-arrow-up"></i>
       </a>
-      <footer className="footer text-center">
+      <footer className="grid-item-footer footer text-center">
         <div className="footer-header">
           Made with <span className="primary-text-color">&lt;/&gt;</span> by
           Ankita Bagale
