@@ -7,7 +7,6 @@ import { useState, useReducer } from "react";
 export const Notes = ({id}) =>{
     const {state} = useStateContext();
     let noteDetails = getNoteDetails(state.notes, id);
-    console.log(noteDetails);
     let noteDetailsSortedWithTime = [...noteDetails].sort((note1, note2)=>Number(note2.time)-Number(note1.time));
     return(
         <>

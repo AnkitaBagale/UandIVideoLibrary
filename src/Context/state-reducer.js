@@ -1,5 +1,4 @@
 
-import { Action } from "history";
 import { isAlreadyAdded, addToArray, removeFromArray, isAlreadyAddedInPlaylist } from "../utils";
 
 export const stateReducer = (state, {type, payload}) =>{

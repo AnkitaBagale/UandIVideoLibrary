@@ -20,7 +20,10 @@
   text-align: center;
   width: 50%;
 }
-
+.spacer-4rem{
+  width: 100%;
+  height: 4rem;
+}
 
 @media screen and (max-width:768px) {
   .text-overlay{

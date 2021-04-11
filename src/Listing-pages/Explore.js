@@ -4,13 +4,10 @@ import { VideoCard } from "./Video-card";
 import { types } from "../database";
 import "./explore.css";
 import { useLocation, Outlet, Link } from "react-router-dom";
-import { useState } from "react";
 import { SideBar } from "../Header/Sidebar";
 
 export const Explore = () =>{
     
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
     return (
 
         <div className="display-flex">

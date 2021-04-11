@@ -1,6 +1,6 @@
 
 import { useStateContext } from "../Context";
-import { Link, useParams, Outlet, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import "./playlists.css";
 import { VideoCardHorizontal } from "./Video-card-horizontal";
 import { useState } from "react";
@@ -120,7 +120,7 @@ export const AllPlaylistContent = ()=>{
                 {
                     state.playlists.map((playlist)=>{    
                     return (
-                        <Link to={{pathname:`/explore/playlists/${playlist.id}`}} className="link-no-style">
+                        <Link key={playlist.id} to={{pathname:`/explore/playlists/${playlist.id}`}} className="link-no-style">
                         <div
                         key={playlist.id}
                         className="card-vertical card-hover"

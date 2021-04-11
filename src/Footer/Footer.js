@@ -1,9 +1,10 @@
 import "./footer.css";
 
 export const Footer = () => {
+  const toTop = "#";
   return (
     <>
-      <a href="#" className="btn btn-float-action" id="back-to-top">
+      <a href={toTop} className="btn btn-float-action" id="back-to-top">
         <i className="fas fa-arrow-up"></i>
       </a>
       <footer className="grid-item-footer footer text-center">

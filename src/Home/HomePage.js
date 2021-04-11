@@ -25,7 +25,8 @@ export const HomePage = ()=>{
             </div>
         </div>
 
-        <div className="spacer-8rem"></div>
+        <div className="spacer-4rem"></div>
+        <div className="spacer-4rem hide-in-mobile"></div>
         
         <HomepageBanner 
             imgSrc={banner2}
@@ -77,7 +78,8 @@ export const HomePage = ()=>{
             reversed={true} 
         />
 
-        <div className="spacer-8rem"></div>
+        <div className="spacer-4rem"></div>
+        <div className="spacer-4rem hide-in-mobile"></div>
     </>
     )
 }

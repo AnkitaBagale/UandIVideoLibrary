@@ -7,7 +7,7 @@ export const HomepageBanner = ({imgSrc, titleText, descText, btnText, btnLink, b
         <div className="banner-wrapper">
             <div className="banner-50-50" style={{flexDirection: reversed?"row-reverse":"row" }}>
                 <span className="badge-container">
-                    <img src={imgSrc} className={reversed ? "banner-img-right" :"banner-img-left"} />
+                    <img src={imgSrc} className={reversed ? "banner-img-right" :"banner-img-left"} alt="banner" />
                     <span className={`badge ${reversed? "bottom-right-position" : "bottom-right-position-reversed"} bg-secondary`}>{badgeText}</span>
                 </span>
 
