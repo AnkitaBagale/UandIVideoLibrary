@@ -3,3 +3,8 @@
     width: 80%;
     margin: 0rem auto;
 }
+.badge-btn{
+    position: absolute;
+    top: 0.7rem;
+    right: 0.3rem;
+}

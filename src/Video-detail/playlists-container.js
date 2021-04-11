@@ -28,7 +28,7 @@ export const AddToPlaylistContainer = ({video, setAddtoPlaylist}) =>{
             (       <button key={playlist.id} 
                         className="btn btn-text-icon-secondary" 
                         onClick={()=>{
-                                dispatch({type:"ADD_TO_PLAYLIST", payload: {playlistId: playlist.id, video}})
+                                dispatch({type:"ADD_OR_REMOVE_TO_PLAYLIST", payload: {playlistId: playlist.id, video}})
                                 setAddtoPlaylist((flag)=>!flag)
                             }
                         }>

@@ -1,17 +1,11 @@
-.text-container{
-    width: calc(100% - 2rem);
-}
+
 .badge-dot-to-separate{
     margin: 0 0.2rem;
 }
 .video-info{
     display: flex;
 }
-.text-container{
-    width: calc(100% - 2rem);
-    box-sizing: border-box;
-    padding-right: 0;
-}
+
 .avatar{
     margin: 0.625rem 0 1rem;
 }
@@ -67,11 +61,15 @@
         margin: 0.625rem 0 1rem 1rem;
     }
     .text-container{
-        width: calc(100% - 3rem);
+        width: 100%;
         padding: 1rem;
     }
 
     .category-list{
         grid-template-columns: 1fr 1fr;
+    }
+
+    .content-area-beside-sidebar{
+        width: 100%;
     }
 }

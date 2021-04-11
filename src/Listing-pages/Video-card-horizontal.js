@@ -19,7 +19,7 @@ export const VideoCardHorizontal = ({video}) =>{
     }
 
     return (
-        <div className="card-horizontal default-container">
+        <div className="card-horizontal default-container bg-light-pink">
             <div className="image-container">
             <img className="img-responsive card-img" src={video.thumbnail} alt="video" />
             </div>

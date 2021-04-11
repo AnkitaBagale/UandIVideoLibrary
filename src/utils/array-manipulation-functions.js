@@ -16,9 +16,9 @@
    return array.find((item)=> item.id === playlistId)
 }
 
- export const isAlreadyAdded = (array, videoId) =>{
+ export const isAlreadyAdded = (array, id) =>{
     for(let i=0; i<array.length; i++){
-        if(array[i].id === videoId){
+        if(array[i].id === id){
             return true;
         }
     }
@@ -41,5 +41,5 @@
  }
 
  export const removeFromArray = (array, id) =>{
-    return array.filter((video)=> video.id !== id )
+    return array.filter((item)=> item.id !== id )
  }

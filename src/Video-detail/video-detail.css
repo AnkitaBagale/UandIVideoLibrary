@@ -88,7 +88,7 @@ background: #edebef;
 
 .video-details{
     width: 70%;
-    padding: 1rem 3rem 1rem 0rem;
+    padding: 1rem 2rem 1rem 0rem;
     box-sizing: border-box;
 }
 .notes-section{
@@ -121,5 +121,9 @@ background: #edebef;
     }
     .notes-section{
         width: 100%;
+    }
+    .scroll-visible-in-mobile{
+        overflow-y: visible;
+        height: fit-content;
     }
 }

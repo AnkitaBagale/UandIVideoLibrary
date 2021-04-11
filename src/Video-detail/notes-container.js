@@ -12,7 +12,7 @@ export const Notes = ({id}) =>{
     return(
         <>
             <>                
-                <ul className="stacked-list margin-top-1rem">
+                <ul className="stacked-list padding-around-1rem">
                 {noteDetailsSortedWithTime.length===0? <li className="padding-around-1rem">No notes added</li> : noteDetailsSortedWithTime.map((note)=>
                     <NoteCard  key={note.id} note={note} />
                 )}

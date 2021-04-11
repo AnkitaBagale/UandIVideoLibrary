@@ -10,7 +10,6 @@ export const StateContextProvider = ({children})=>{
                                 {
                                     id: "1",
                                     title: "My Playlist",
-                                    desc: "My own curation",
                                     thumbnail: "",
                                     videoList : [
                                         {id: "ewMksAbgdBI",
@@ -27,7 +26,6 @@ export const StateContextProvider = ({children})=>{
                                 {
                                     id: "2",
                                     title: "Sketching Playlist",
-                                    desc: "My own curation 2",
                                     thumbnail: "",
                                     videoList : [
                                         {id: "jopx5u5QVpo",

@@ -1,10 +1,11 @@
 
+import { Action } from "history";
 import { isAlreadyAdded, addToArray, removeFromArray, isAlreadyAddedInPlaylist } from "../utils";
 
 export const stateReducer = (state, {type, payload}) =>{
     switch (type){
 
-        case "ADD_TO_PLAYLIST" : {    
+        case "ADD_OR_REMOVE_TO_PLAYLIST" : {    
             if( !isAlreadyAddedInPlaylist(state.playlists, payload.playlistId, payload.video.id) )
                 return { ...state, playlists : state.playlists.map((playlist)=>{
                                 
@@ -29,8 +30,26 @@ export const stateReducer = (state, {type, payload}) =>{
             return { ...state, playlists : addToArray(state.playlists, {...payload.playlist, videoList: [payload.video] })}
         }
 
+        case "UPDATE_PLAYLIST" : {
+            return { ...state, playlists : state.playlists.map((item)=>
+                item.id !== payload.id ? item : payload
+            )}
+        }
+
+        case "DELETE_PLAYLIST" : {
+            return { ...state, playlists : removeFromArray(state.playlists, payload)}
+        }
+
         case "ADD_TO_HISTORY" : {
             return {...state, watchHistory: addToArray(state.watchHistory,{...payload, date: new Date()}) }
+        }
+
+        case "REMOVE_FROM_HISTORY" : {
+            return {...state, watchHistory: removeFromArray(state.watchHistory,payload) }
+        }
+
+        case "CLEAR_HISTORY" : {
+            return {...state, watchHistory: []}
         }
 
         case "ADD_OR_REMOVE_TO_WATCH_LATER" : {
@@ -45,9 +64,6 @@ export const stateReducer = (state, {type, payload}) =>{
                     : {...state, likedVideos: addToArray(state.likedVideos, payload)}
         }
 
-        case "CLEAR_HISTORY" : {
-            return {...state, watchHistory: []}
-        }
         case "ADD_NOTE" : {
             return {...state, notes: addToArray(state.notes, payload)}
         }

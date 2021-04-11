@@ -39,7 +39,7 @@ export const VideoDetail = () =>{
                     </div>
                 </div>
 
-                <div className="notes-section scrollbar-styled" id="note-section">
+                <div className="notes-section scrollbar-styled scroll-visible-in-mobile" id="note-section">
                     <div>
                         <h6 className="padding-around-1rem margin-0">Notes</h6>
                         <div>

@@ -46,7 +46,7 @@ export const Nav = () => {
                     </li>
                 </Link>
 
-                <li className="list-inline-item">
+                {/* <li className="list-inline-item">
                     <NavLink end to="/explore" activeClassName="primary-text-color" className="link-no-style">
                         Explore
                     </NavLink>
@@ -68,7 +68,48 @@ export const Nav = () => {
                     <NavLink to="/explore/history" activeClassName="primary-text-color" className="link-no-style">
                         Learning History
                     </NavLink>
-                </li> 
+                </li>  */}
+
+                <li className="list-inline-item">
+                    <NavLink to="/explore" end activeClassName="primary-text-color" className="link-no-style" >
+                    <span className="padding-right-1rem">
+                        <i className="nav-icon hide-in-desktop fas fa-compass"></i>
+                    </span>
+                    <span>Explore</span>
+                    </NavLink>
+                </li>
+                <li className="list-inline-item">
+                    <NavLink to="/explore/playlists" activeClassName="primary-text-color" className="link-no-style" >
+                    <span className="padding-right-1rem">
+                        <i className="nav-icon hide-in-desktop fas fa-folder-plus"></i>
+                    </span>
+                    <span>Playlists</span>
+                    </NavLink>
+                </li>
+                <li className="list-inline-item">
+                    <NavLink to="/explore/likes" activeClassName="primary-text-color" className="link-no-style" >
+                    <span className="padding-right-1rem">
+                        <i className="nav-icon hide-in-desktop fas fa-thumbs-up"></i>
+                    </span>
+                    <span>Likes</span>
+                    </NavLink>
+                </li>
+                <li className="list-inline-item">
+                    <NavLink to="/explore/saved" activeClassName="primary-text-color" className="link-no-style" >
+                    <span className="padding-right-1rem">
+                        <i className="nav-icon hide-in-desktop fas fa-bookmark"></i>
+                    </span>
+                    <span>Saved</span>
+                    </NavLink>
+                </li>
+                <li className="list-inline-item">
+                    <NavLink to="/explore/history" activeClassName="primary-text-color" className="link-no-style" >
+                    <span className="padding-right-1rem">
+                        <i className="nav-icon hide-in-desktop fas fa-clock"></i>
+                    </span>
+                    <span>History</span>
+                    </NavLink>
+                </li>
 
             </ul>
 

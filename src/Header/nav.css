@@ -2,8 +2,15 @@
 .link-no-style.primary-text-color{
     color: var(--primary-color);
 }
+.burger{
+    z-index: var(--z-index-4);
+}
 .nav-bar{
     font-weight: 400;
+}
+
+.primary-text-color .nav-icon{
+    color: var(--primary-color);
 }
 .search-bar{
     border-radius: 1.5rem;
@@ -63,4 +70,12 @@
     .nav-bar{
         min-height: 5vh;
     }  
+    
+    .nav-icon{
+        color: #464a5a;
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 1.2rem;
+        display: inline-block;
+    }
 }

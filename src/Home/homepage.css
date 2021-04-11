@@ -2,3 +2,30 @@
     margin: 0;
     border-radius: 0;
   }
+
+.layout-container{
+  height: 25rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.text-overlay{
+  justify-self: right;
+  padding: 1rem;
+  margin: 1rem 2rem;
+  background-color: rgb(255, 255, 255,0.8);
+  text-align: center;
+  width: 50%;
+}
+
+
+@media screen and (max-width:768px) {
+  .text-overlay{
+    width: calc(100% - 2rem);
+    margin: 1rem;
+
+  }
+}
