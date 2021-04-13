@@ -28,10 +28,10 @@ export const Search = () =>{
 
     const { state } = useStateContext();
 
-    const {search} = useLocation();
-    const searchQuerySplit = search.match(/(\?type=)(.*)/);
+    
+    const query = new URLSearchParams(useLocation().search);
 
-    const searchQuery = searchQuerySplit ? decodeURI(searchQuerySplit[2]) : "All";
+    const searchQuery = query.get("type")? query.get("type") : "All";
 
     return(
         
