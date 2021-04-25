@@ -2,7 +2,7 @@
 import { useStateContext } from "../Context";
 import { Link, useParams, Navigate } from "react-router-dom";
 import "./playlists.css";
-import { VideoCardHorizontal } from "./Video-card-horizontal";
+import { VideoCardHorizontal } from "./VideoCardHorizontal";
 import { useState } from "react";
 
 

@@ -1,1 +1,2 @@
-export { StateContextProvider, useStateContext } from "./state-context";
+export { StateContextProvider, useStateContext } from "./StateContext";
+export { LanguageContextProvider,useLanguageContext } from "./LanguageContext";

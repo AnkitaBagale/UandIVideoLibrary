@@ -1,11 +1,7 @@
 
 
  export const getVideoDetail = (array, id)=>{
-    for(let i=0; i<array.length; i++){
-        if(array[i].id === id){
-            return array[i];
-        }
-    }   
+   return array.find((item)=> item.id === id)
  }
 
  export const getNoteDetails = (array, videoId) => {
@@ -17,12 +13,7 @@
 }
 
  export const isAlreadyAdded = (array, id) =>{
-    for(let i=0; i<array.length; i++){
-        if(array[i].id === id){
-            return true;
-        }
-    }
-    return false;
+   return array.find((item)=> item.id === id)
  }
 
  export const isAlreadyAddedInPlaylist = (playlists, playlistId, videoId) =>{

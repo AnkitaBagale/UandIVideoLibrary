@@ -1,6 +1,6 @@
 
 import { useStateContext } from "../Context";
-import { VideoCard } from "./Video-card";
+import { VideoCard } from "./VideoCard";
 import { types } from "../database";
 import "./explore.css";
 import { useLocation, Outlet, Link } from "react-router-dom";

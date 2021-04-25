@@ -1,6 +1,6 @@
 .video-container{
     width: 100%;
-    height: 390px;
+    height: 24.375rem;
     margin-top: 1rem;
 }
 .max-width-do-not-stretch{
@@ -93,7 +93,7 @@ background: #edebef;
 }
 .notes-section{
     width: 30%;
-    height: 390px;
+    height: 24.375rem;
     margin-top: 2rem;
     overflow-y: auto;
     padding-right: 0.25rem;
@@ -110,7 +110,7 @@ background: #edebef;
 
 @media screen and (max-width:768px) {
     .video-container{
-        height: 250px;
+        height: 15.625rem;
     }
     .video-tutor-details .avatar{
         margin: 0 1rem 0 0;

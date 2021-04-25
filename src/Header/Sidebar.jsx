@@ -29,9 +29,9 @@ export const SideBar = () =>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="/explore/saved" className="nav-icon-link btn btn-text-icon-secondary" >
+                    <Link to="/explore/watchlater" className="nav-icon-link btn btn-text-icon-secondary" >
                     <i className="btn-icon padding-0 fas fa-bookmark"></i>
-                    <span className="nav-icon-text">Saved</span>
+                    <span className="nav-icon-text">Watch Later</span>
                     </Link>
                 </li>
                 <li>

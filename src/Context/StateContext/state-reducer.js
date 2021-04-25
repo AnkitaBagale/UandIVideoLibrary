@@ -1,5 +1,5 @@
 
-import { isAlreadyAdded, addToArray, removeFromArray, isAlreadyAddedInPlaylist } from "../utils";
+import { isAlreadyAdded, addToArray, removeFromArray, isAlreadyAddedInPlaylist } from "../../utils";
 
 export const stateReducer = (state, {type, payload}) =>{
     switch (type){
@@ -8,10 +8,10 @@ export const stateReducer = (state, {type, payload}) =>{
             if( !isAlreadyAddedInPlaylist(state.playlists, payload.playlistId, payload.video.id) )
                 return { ...state, playlists : state.playlists.map((playlist)=>{
                                 
-                                if(payload.playlistId !== playlist.id)
-                                    return playlist 
+                        if(payload.playlistId !== playlist.id)
+                            return playlist 
 
-                                return {...playlist, videoList: addToArray(playlist.videoList, payload.video)}
+                        return {...playlist, videoList: addToArray(playlist.videoList, payload.video)}
 
                     }) 
                 }

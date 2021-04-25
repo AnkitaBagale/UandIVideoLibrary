@@ -27,7 +27,7 @@
 }
 .logo-and-symbol-style{
   font-size: 1rem; 
-  margin-right: 3px;
+  margin-right: 0.1875rem;
 }
 .logo-tagline{
   font-size:0.625rem; 
@@ -110,9 +110,7 @@
 .shadow-right{
  box-shadow: 4px 8px 12px 0px rgb(0 0 0 / 5%);
 }
-.padding-0{
-  padding: 0;
-}
+
 .padding-right-0{
   padding-right: 0;
 }

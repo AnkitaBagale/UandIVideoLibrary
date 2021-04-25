@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./nav.css"
 import languageChangeSvg  from "./Images/languageChange.svg"
-import { useLanguageContext } from "../Context/language-context";
+import { useLanguageContext } from "../Context";
 
 const allLanguages = ["English", "Hindi"];
 
@@ -46,30 +46,6 @@ export const Nav = () => {
                     </li>
                 </Link>
 
-                {/* <li className="list-inline-item">
-                    <NavLink end to="/explore" activeClassName="primary-text-color" className="link-no-style">
-                        Explore
-                    </NavLink>
-                </li>
-
-                <li className="list-inline-item">
-                    <NavLink to="/explore/playlists" activeClassName="primary-text-color" className="link-no-style">
-                        My Playlists
-                    </NavLink>
-                </li>
-
-                <li className="list-inline-item">
-                    <NavLink to="/explore/saved" activeClassName="primary-text-color" className="link-no-style">
-                        Watch Later
-                    </NavLink>
-                </li>
-
-                <li className="list-inline-item">
-                    <NavLink to="/explore/history" activeClassName="primary-text-color" className="link-no-style">
-                        Learning History
-                    </NavLink>
-                </li>  */}
-
                 <li className="list-inline-item">
                     <NavLink to="/explore" end activeClassName="primary-text-color" className="link-no-style" >
                     <span className="padding-right-1rem">
@@ -95,11 +71,11 @@ export const Nav = () => {
                     </NavLink>
                 </li>
                 <li className="list-inline-item">
-                    <NavLink to="/explore/saved" activeClassName="primary-text-color" className="link-no-style" >
+                    <NavLink to="/explore/watchlater" activeClassName="primary-text-color" className="link-no-style" >
                     <span className="padding-right-1rem">
                         <i className="nav-icon hide-in-desktop fas fa-bookmark"></i>
                     </span>
-                    <span>Saved</span>
+                    <span>Watch Later</span>
                     </NavLink>
                 </li>
                 <li className="list-inline-item">

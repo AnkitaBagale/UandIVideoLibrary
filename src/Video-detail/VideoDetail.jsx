@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { useStateContext } from "../Context";
 
 import { getVideoDetail, isAlreadyAdded } from "../utils";
-import {AddToPlaylistContainer} from "./playlists-container";
-import {Notes, AddNewNote} from "./notes-container";
+import {AddToPlaylistContainer} from "./PlaylistsContainer";
+import {Notes, AddNewNote} from "./NotesContainer";
 import  ReactPlayer  from "react-player";
 import "./video-detail.css";
 

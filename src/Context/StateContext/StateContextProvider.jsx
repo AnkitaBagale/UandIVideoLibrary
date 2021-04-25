@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { stateReducer } from "./state-reducer";
-import { videos } from "../database";
+import { videos } from "../../database";
 
 const StateContext = createContext();
 

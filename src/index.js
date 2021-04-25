@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from "react-router-dom"; 
 import { App } from './App';
 import { StateContextProvider } from "./Context";
-import { LanguageContextProvider } from './Context/language-context';
+import { LanguageContextProvider } from './Context';
 
 
 
@@ -10,7 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <LanguageContextProvider>
       <StateContextProvider> 
-        <App />
+        <Router>
+          <App />
+        </Router>
       </StateContextProvider>
     </LanguageContextProvider>
   </React.StrictMode>,
