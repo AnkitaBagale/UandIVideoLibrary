@@ -1,30 +1,11 @@
+import { useLocation, Link } from "react-router-dom";
+import { useStateContext } from "../../Context";
+import { VideoCard } from "./utils";
+import { types } from "../../database";
+import "./styles.css";
 
-import { useStateContext } from "../Context";
-import { VideoCard } from "./VideoCard";
-import { types } from "../database";
-import "./explore.css";
-import { useLocation, Outlet, Link } from "react-router-dom";
-import { SideBar } from "../Header/Sidebar";
 
-export const Explore = () =>{
-    
-    return (
-
-        <div className="display-flex">
-            <div className = "sidebar sidebar-active scrollbar-styled shadow-right" >  
-                <SideBar />
-            </div> 
-            <div className="content-area-beside-sidebar">
-                <Outlet />
-            </div>
-        </div>
-        
-            
-    )
-
-}
-
-export const Search = () =>{
+export const SearchResult = () =>{
 
     const { state } = useStateContext();
 

@@ -1,8 +1,7 @@
-
-import { useStateContext } from "../Context";
-import { isAlreadyAdded } from "../utils";
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
+import { useStateContext } from "../../Context";
+import { isAlreadyAdded } from "../../utils";
 
 export const AddToPlaylistContainer = ({video, setAddtoPlaylist}) =>{
     const { state, dispatch } = useStateContext();

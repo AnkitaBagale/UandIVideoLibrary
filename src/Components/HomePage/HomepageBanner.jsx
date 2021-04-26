@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./banner.css";
+import "./css/banner.css";
 
 export const HomepageBanner = ({imgSrc, titleText, descText, btnText, btnLink, badgeText, reversed}) =>{
     return(

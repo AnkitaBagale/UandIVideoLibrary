@@ -1,0 +1,1 @@
+export { convertTimeToString } from "./convert-time-to-string";

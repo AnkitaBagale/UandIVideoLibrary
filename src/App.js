@@ -1,10 +1,6 @@
 
 import './App.css';
-import { HomePage } from "./Home";
-import { Nav } from "./Header";
-import { Footer } from "./Footer";
-import { Explore, Search, History, PlaylistMainContent, AllPlaylistContent, LikedVideos, WatchLater } from "./Listing-pages";
-import { VideoDetail } from "./Video-detail";
+import { VideoDetail, Explore, SearchResult, History, VideosInPlaylist, AllPlaylists, LikedVideos, WatchLater, HomePage, Nav, Footer } from "./Components";
 
 import {
   Routes,
@@ -15,7 +11,6 @@ import {
 export function App() {
   return (
     
-      
       <div className="App page-grid-layout">
         <div className="grid-item-nav">
           <Nav />
@@ -27,10 +22,10 @@ export function App() {
             <Route path="/" element={<HomePage />} />              
 
             <Route path="/explore" element={<Explore />} >   
-              <Route path="/" element={<Search />} />          
+              <Route path="/" element={<SearchResult />} />          
               
-              <Route path="/playlists" element={<AllPlaylistContent />} />
-              <Route path="/playlists/:playlistId" element={<PlaylistMainContent />} />            
+              <Route path="/playlists" element={<AllPlaylists />} />
+              <Route path="/playlists/:playlistId" element={<VideosInPlaylist />} />            
               <Route path="/watchlater" element={<WatchLater />} />
               <Route path="/history" element={<History />} /> 
               <Route path="/likes" element={<LikedVideos />} />
@@ -42,10 +37,7 @@ export function App() {
 
         </div>
         
-        
-          <Footer />
-        
-        
+        <Footer />
         
       </div>
     

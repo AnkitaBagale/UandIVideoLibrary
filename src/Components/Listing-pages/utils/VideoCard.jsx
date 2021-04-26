@@ -1,5 +1,6 @@
-import "./explore.css"
+
 import { Link } from "react-router-dom";
+import "../styles.css"
 
 export const VideoCard = ({video}) =>{
 

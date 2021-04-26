@@ -1,12 +1,10 @@
 import { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-
-import { useStateContext } from "../Context";
-
-import { getVideoDetail, isAlreadyAdded } from "../utils";
-import {AddToPlaylistContainer} from "./PlaylistsContainer";
-import {Notes, AddNewNote} from "./NotesContainer";
 import  ReactPlayer  from "react-player";
+import { useStateContext } from "../../Context";
+import { getVideoDetail, isAlreadyAdded } from "../../utils";
+import {AddToPlaylistContainer} from "./AddToPlaylistContainer";
+import {NotesContainer, NoteEditor} from "./Notes";
 import "./video-detail.css";
 
 
@@ -43,11 +41,11 @@ export const VideoDetail = () =>{
                     <div>
                         <h6 className="padding-around-1rem margin-0">Notes</h6>
                         <div>
-                            <AddNewNote playerRef={playerRef} videoId={videoDetails.id} />
+                            <NoteEditor playerRef={playerRef} videoId={videoDetails.id} />
                         </div>
                     </div>
 
-                    <Notes id={videoDetails.id}/>
+                    <NotesContainer id={videoDetails.id}/>
                     
                 </div>
                 

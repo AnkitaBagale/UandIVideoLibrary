@@ -1,7 +1,7 @@
 
-import { useStateContext } from "../Context";
 import { Link } from "react-router-dom";
-import { VideoCardHorizontal } from "./VideoCardHorizontal";
+import { useStateContext } from "../../Context";
+import { VideoCardHorizontal } from "./utils";
 
 export const LikedVideos = () =>{
  

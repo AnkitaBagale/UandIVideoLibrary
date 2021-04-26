@@ -1,13 +1,12 @@
-
-import "./homepage.css"
+import { Link } from "react-router-dom";
 import { AlertBar } from "./Alertbar";
-import { HomepageBanner } from "./Homepage-banner";
+import { HomepageBanner } from "./HomepageBanner";
 import banner1 from "./Images/banner1.jpeg";
 import banner3 from "./Images/banner3-2.png";
 import banner2 from "./Images/banner5.jpeg";
 import banner4 from "./Images/banner6-2.jpg";
 import bannerTop from "./Images/banner-top2.jpg"
-import { Link } from "react-router-dom";
+import "./css/homepage.css";
 
 export const HomePage = ()=>{
     return(

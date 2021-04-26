@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./nav.css"
-import languageChangeSvg  from "./Images/languageChange.svg"
-import { useLanguageContext } from "../Context";
+import { useLanguageContext } from "../../Context";
+import languageChangeSvg  from "./Images/languageChange.svg";
+import "./css/nav.css";
 
 const allLanguages = ["English", "Hindi"];
 
