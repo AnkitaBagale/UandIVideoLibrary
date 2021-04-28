@@ -28,7 +28,7 @@ export const VideoCardHorizontal = ({video}) =>{
                     <h6>{video.name}</h6>
                 </div>
                 <div className="text-container-desc">
-                    <p className="body-cp-md">{video.tutor.name}</p>
+                    <p className="body-cp-md">{video.tutorId.name}</p>
                     {video.date ? renderDate(video.date) : renderVideoTypeLevel(video.type, video.level)}
                 </div>
             </div>

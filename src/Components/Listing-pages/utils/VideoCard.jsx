@@ -5,7 +5,7 @@ import "../styles.css"
 export const VideoCard = ({video}) =>{
 
     return (
-    <Link to={`/explore/${video.id}`} className="link-no-style" >
+    <Link to={`/explore/${video._id}`} className="link-no-style" >
     <div className="card-vertical">
 
       <div className="image-container">
@@ -16,7 +16,7 @@ export const VideoCard = ({video}) =>{
         />
       </div>
       <div className = "video-info">
-        <img className="avatar avatar-xs-size" src={video.tutor.avatar} alt="video" />
+        <img className="avatar avatar-xs-size" src={video.tutorId.avatar} alt="video" />
 
         <div className="text-container padding-right-0">
             <div className="text-container-title">
@@ -26,7 +26,7 @@ export const VideoCard = ({video}) =>{
             </div>
             <div className="text-container-desc">
                 <p className="body-cp-md secondary-text-color text-light-weight">
-                {video.tutor.name}
+                {video.tutorId.name}
                 </p>
                 <p className="body-cp-md secondary-text-color text-light-weight display-flex">
                  {video.type}<span className="badge-dot-to-separate">&#8226;</span>{video.level}

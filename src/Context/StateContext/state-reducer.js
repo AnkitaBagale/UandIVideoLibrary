@@ -3,6 +3,9 @@ import { isAlreadyAdded, addToArray, removeFromArray, isAlreadyAddedInPlaylist }
 
 export const stateReducer = (state, {type, payload}) =>{
     switch (type){
+        case "SET_VIDEOS" : {
+            return { ...state, videos: payload }
+        }
 
         case "ADD_OR_REMOVE_TO_PLAYLIST" : {    
             if( !isAlreadyAddedInPlaylist(state.playlists, payload.playlistId, payload.video.id) )

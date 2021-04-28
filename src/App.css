@@ -14,7 +14,13 @@
 .bg-lesslight-pink{
   background-color: var(--bg-lesslight-pink);
 }
-
+.text-green{
+  color: #03a685; 
+}
+.spacer-3rem {
+  width: 100%;
+  height: 3rem;
+}
 .margin-0{
   margin: 0;
 }
@@ -58,6 +64,9 @@
 }
 .margin-bottom-0{
   margin-bottom: 0;
+}
+.margin-bottom-1rem{
+  margin-bottom: 1rem;
 }
 .grid-item-nav{
   grid-area: nav;

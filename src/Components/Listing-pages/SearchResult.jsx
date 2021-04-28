@@ -24,14 +24,14 @@ export const SearchResult = () =>{
                 </Link>)}
             </div>
         
-            <div className="grid-4-column-layout grid-right-of-filter padding-around-1rem">  
+            { state.videos.length!==0 && <div className="grid-4-column-layout grid-right-of-filter padding-around-1rem">  
             {
             searchQuery==="All" ?
                             
                 state.videos.map((video)=> <VideoCard key={video.id} video={video} />)
             : (state.videos.filter((item)=>item.type===searchQuery)).map((video)=> <VideoCard key={video.id} video={video} />)
             }  
-            </div> 
+            </div>} 
         </>
     )
 

@@ -67,7 +67,7 @@ export const VideosInPlaylist = ()=>{
                 ? (<div className="p text-center text-regular-weight">No videos added to the playlist</div>)    
                 : playlist.videoList.map((video)=>
                 <li key="video.id" className="badge-container" style={{width:"100%"}}>
-                    <Link className="link-no-style" to={`/explore/${video.id}`}>
+                    <Link className="link-no-style" to={`/explore/${video._id}`}>
                             <VideoCardHorizontal video = {video} />
                     </Link>
                     <button onClick={()=>{ 

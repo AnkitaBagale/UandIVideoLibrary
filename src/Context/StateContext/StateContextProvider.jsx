@@ -40,7 +40,7 @@ export const StateContextProvider = ({children})=>{
                                 } 
                                 
                             ], 
-                          videos:videos, 
+                          videos:[], 
                           watchLater:[],
                           watchHistory: [],
                           likedVideos: [],

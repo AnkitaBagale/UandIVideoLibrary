@@ -9,7 +9,7 @@ export const AllPlaylists = ()=>{
         <h1 className="h3 text-center margin-top-3rem">All Playlists</h1>
 
          <div className="category-list grid-4-column-layout padding-around-1rem">
-            <Link to="/explore/likes" className="link-no-style">
+            <Link to="/explore/liked" className="link-no-style">
                 <div className="card-vertical card-hover">
                     <div className="overlay-container">
                         <div className="image-container category-list-item-bg">                    
@@ -20,7 +20,7 @@ export const AllPlaylists = ()=>{
                     </div>
                 </div>
             </Link>
-            <Link to="/explore/saved" className="link-no-style">
+            <Link to="/explore/watchlater" className="link-no-style">
                 <div className="card-vertical card-hover">
                     <div className="overlay-container">
                         <div className="image-container category-list-item-bg">                    

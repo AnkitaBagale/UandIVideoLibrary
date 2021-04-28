@@ -50,7 +50,9 @@
 .dropdown-item:not(:last-child){
     margin-bottom: 0.3rem;
 }
-
+ .nav-section {
+    width: 50%;
+  }
 @media screen and (min-width: 1025px) {
     .search-bar{
         border: 1px solid;
@@ -66,7 +68,9 @@
     .search-bar-btn {
         font-size: 1.3rem;
     }
-    
+    .padding-right-1rem-in-mobile{
+        padding-right: 1rem;
+    }
     .nav-bar{
         min-height: 5vh;
     }  
@@ -78,4 +82,11 @@
         font-size: 1.2rem;
         display: inline-block;
     }
+    .nav-section {
+        width: auto;
+      }
+
+      .nav-icon-link.avatar{
+          margin: 0;
+      }
 }

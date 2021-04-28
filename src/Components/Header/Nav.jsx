@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useLanguageContext } from "../../Context";
+import { useAuthentication, useLanguageContext } from "../../Context";
 import languageChangeSvg  from "./Images/languageChange.svg";
 import "./css/nav.css";
 
@@ -11,6 +11,7 @@ export const Nav = () => {
 
     const [ navOpen, setNavOpen ] = useState(false);
     const [ languageDropdownOpen, setLanguageDropdown] = useState(false);
+    const { isUserLoggedIn, username } = useAuthentication();
    
     return (
     <nav className= { navOpen ? "nav-bar shadow-box active" : "nav-bar shadow-box" }>
@@ -31,24 +32,21 @@ export const Nav = () => {
             </div>        
             
             <ul className="nav-bar-links list-style-none nav-section-items">
-                <Link to="/" className="link-no-style">
-                    <li className="list-inline-item avatar-in-nav-links">
-                        <div className="primary-text-color logo-title">
-                        U
-                        <span className="tertiary-text-color logo-and-symbol-style">
-                            &
-                        </span>
-                        I
-                        </div>
-                        <div className="tertiary-text-color logo-tagline">
-                        LET'S DESIGN TOGETHER
-                        </div>
-                    </li>
-                </Link>
+                
+                <li className="list-inline-item avatar-in-nav-links">
+                    <Link
+                    to="/profile"
+                    className="nav-icon-link link-no-style avatar avatar-sm-size text-center"
+                    >
+                    <span className="nav-icon">
+                        <i className="fas fa-user"></i>
+                    </span>
+                    </Link>
+                </li>
 
                 <li className="list-inline-item">
                     <NavLink to="/explore" end activeClassName="primary-text-color" className="link-no-style" >
-                    <span className="padding-right-1rem">
+                    <span className="padding-right-1rem-in-mobile">
                         <i className="nav-icon hide-in-desktop fas fa-compass"></i>
                     </span>
                     <span>Explore</span>
@@ -56,15 +54,15 @@ export const Nav = () => {
                 </li>
                 <li className="list-inline-item">
                     <NavLink to="/explore/playlists" activeClassName="primary-text-color" className="link-no-style" >
-                    <span className="padding-right-1rem">
+                    <span className="padding-right-1rem-in-mobile">
                         <i className="nav-icon hide-in-desktop fas fa-folder-plus"></i>
                     </span>
                     <span>Playlists</span>
                     </NavLink>
                 </li>
                 <li className="list-inline-item">
-                    <NavLink to="/explore/likes" activeClassName="primary-text-color" className="link-no-style" >
-                    <span className="padding-right-1rem">
+                    <NavLink to="/explore/liked" activeClassName="primary-text-color" className="link-no-style" >
+                    <span className="padding-right-1rem-in-mobile">
                         <i className="nav-icon hide-in-desktop fas fa-thumbs-up"></i>
                     </span>
                     <span>Likes</span>
@@ -72,7 +70,7 @@ export const Nav = () => {
                 </li>
                 <li className="list-inline-item">
                     <NavLink to="/explore/watchlater" activeClassName="primary-text-color" className="link-no-style" >
-                    <span className="padding-right-1rem">
+                    <span className="padding-right-1rem-in-mobile">
                         <i className="nav-icon hide-in-desktop fas fa-bookmark"></i>
                     </span>
                     <span>Watch Later</span>
@@ -80,7 +78,7 @@ export const Nav = () => {
                 </li>
                 <li className="list-inline-item">
                     <NavLink to="/explore/history" activeClassName="primary-text-color" className="link-no-style" >
-                    <span className="padding-right-1rem">
+                    <span className="padding-right-1rem-in-mobile">
                         <i className="nav-icon hide-in-desktop fas fa-clock"></i>
                     </span>
                     <span>History</span>
@@ -99,8 +97,20 @@ export const Nav = () => {
                 </Link>
                 <input className="search-bar-input" type="text" placeholder="Type to search" name="search" />
             </label>
-            
-            <button className="language-icon link-no-style dropdown-list-container" onClick={()=>{setLanguageDropdown(flag=>!flag)}}>
+
+        <ul className="nav-icons list-style-none nav-section-item-width50pc hide-in-mobile">
+          <li className="list-inline-item hide-profile-mobile">
+            <Link to="/profile" className="nav-icon-link link-no-style">
+              <span className="nav-icon">
+                <i className="fas fa-user"></i>
+              </span>
+              <span className="nav-icon-text">
+                {username ? `Hi, ${username}` : "Login"}
+              </span>
+            </Link>
+          </li>
+          {/* <li>
+              <button className="language-icon link-no-style dropdown-list-container" onClick={()=>{setLanguageDropdown(flag=>!flag)}}>
                 <img src={languageChangeSvg} alt="change language" />
                 <span className="dropdown-list" style={{display: languageDropdownOpen?"block":"none"}}> 
                     <ul className="list-style-none text-left">
@@ -116,7 +126,12 @@ export const Nav = () => {
                     </ul>
 
                 </span>
-            </button>
+                </button>
+        </li> */}
+          </ul>
+            
+            
+            
 
         </div>
     </nav>)

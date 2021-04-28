@@ -23,7 +23,7 @@ export const SideBar = () =>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="/explore/likes" className="nav-icon-link btn btn-text-icon-secondary" >
+                    <Link to="/explore/liked" className="nav-icon-link btn btn-text-icon-secondary" >
                     <i className="btn-icon padding-0 fas fa-thumbs-up"></i>
                     <span className="nav-icon-text">Likes</span>
                     </Link>
