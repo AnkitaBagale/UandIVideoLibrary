@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useStateContext } from "../../Context";
+import { addOrRemoveFromPlaylist } from "../utils";
 import { VideoCardHorizontal } from "./utils";
 
 export const WatchLater = () =>{
@@ -13,22 +14,21 @@ export const WatchLater = () =>{
                 <img className="img-responsive" src="https://i.postimg.cc/TwsBcV04/jess-bailey-l3-N9-Q27z-ULw-unsplash.jpg"  alt="watchLater" />
                 <div className="text-container">
                     <h2 className="h4 padding-top-1rem">Saved Videos to Watch Later</h2>
-                    <p>{watchLater.length} videos</p>
+                    <p>{watchLater.videoList.length} videos</p>
                 </div>
                 <div className="filter-divider-line hide-in-desktop"></div>
             </div>
             <ul className="stacked-list padding-around-1rem scrollbar-styled height-90vh">
             {
-             watchLater.length === 0
+             watchLater.videoList.length === 0
             ? (<li className="text-center p text-regular-weight">No saved videos</li>)
-            :  watchLater.map(
-                    (video)=> 
-                    <li key="video.id" className="badge-container" style={{width:"100%"}}>  
-                        <Link className="link-no-style" to={`/explore/${video.id}`}>
-                            <VideoCardHorizontal video={video} />
+            :  watchLater.videoList.map(
+                    ({videoId: video, date})=> 
+                    <li key={video._id} className="badge-container" style={{width:"100%"}}>  
+                        <Link className="link-no-style" to={`/explore/${video._id}`}>
+                            <VideoCardHorizontal video={{...video, date}} />
                         </Link>
-                        <button onClick={()=>{ 
-                            dispatch({type:"ADD_OR_REMOVE_TO_WATCH_LATER", payload:  video}) }} 
+                        <button onClick={()=> addOrRemoveFromPlaylist({playlistId: watchLater._id, dispatch, videoId: video._id, type: "SET_WATCH_LATER"})}
                             className="btn btn-icon-secondary margin-0 btn-sm-size badge-btn">
                             <i className="fas fa-trash-alt btn-icon"></i>
                         </button>

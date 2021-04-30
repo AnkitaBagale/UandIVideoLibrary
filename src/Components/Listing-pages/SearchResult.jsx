@@ -28,8 +28,8 @@ export const SearchResult = () =>{
             {
             searchQuery==="All" ?
                             
-                state.videos.map((video)=> <VideoCard key={video.id} video={video} />)
-            : (state.videos.filter((item)=>item.type===searchQuery)).map((video)=> <VideoCard key={video.id} video={video} />)
+                state.videos.map((video)=> <VideoCard key={video._id} video={video} />)
+            : (state.videos.filter((item)=>item.type===searchQuery)).map((video)=> <VideoCard key={video._id} video={video} />)
             }  
             </div>} 
         </>

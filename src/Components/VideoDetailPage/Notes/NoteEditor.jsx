@@ -1,16 +1,17 @@
 import { useReducer } from "react";
-import { v4 as uuidv4 } from 'uuid';
-import { useStateContext } from "../../../Context";
+import { useAuthentication } from "../../../Context";
+import { CreateNoteForVideo, UpdateNoteForVideo } from "../../utils/server-requests";
 
 const noteDefaultState = {
-    id: null,
+    _id: null,
     title: "",
     description:""
 }
 
 
-export const NoteEditor = ({note = noteDefaultState, setEditMode, playerRef, videoId}) =>{
+export const NoteEditor = ({note = noteDefaultState, setEditMode, setNotes, playerRef, videoId}) =>{
     
+    const {userId} = useAuthentication();
     const noteReducer = (state, {type, payload}) =>{
         switch (type) {
             case "SET_TITLE" : {
@@ -29,43 +30,58 @@ export const NoteEditor = ({note = noteDefaultState, setEditMode, playerRef, vid
 
     const [noteState, noteDispatch] = useReducer(noteReducer, note);
 
-    const {dispatch} = useStateContext();
-
     return(
         
              <div className="padding-around-1rem">
                 <div className="row">
-                    <input className="body-cp-rg form-field" value={noteState.title} onChange={(e)=>{noteDispatch({type:"SET_TITLE", payload:e.target.value})}} placeholder="Title" autoFocus/>
+                    <input className="body-cp-rg form-field" value={noteState.title} 
+                    onChange={(e)=>{noteDispatch({type:"SET_TITLE", payload:e.target.value})}} 
+                    placeholder="Title" autoFocus/>
                     </div>
                     <div className="row margin-bottom-0">
-                    <textarea className="body-cp-md form-field" value={noteState.description} onChange={(e)=>{noteDispatch({type:"SET_DESCRIPTION", payload:e.target.value})}} placeholder="Description" />
+                    <textarea className="body-cp-md form-field" value={noteState.description} 
+                    onChange={(e)=>{noteDispatch({type:"SET_DESCRIPTION", payload:e.target.value})}} 
+                    placeholder="Description" />
                 </div>
                 <div className="CTA-Container">
                     <button 
                         onClick={()=>{
-                            if(noteState.id){
-                                dispatch({type: "EDIT_NOTE", payload: noteState});
-                                setEditMode(false);
-                            }else{
-                                dispatch({type: "ADD_NOTE" , payload:{
-                                    ...noteState,
-                                    id: uuidv4(),
-                                    videoId,
-                                    time: playerRef.current.getCurrentTime()}});
-                                    noteDispatch({type:"SET_DESCRIPTION", payload:""});
-                                    noteDispatch({type:"SET_TITLE", payload:""})
+                            if(noteState._id) {
+                                UpdateNoteForVideo({
+                                    noteId: noteState._id,
+                                    setNotes, 
+                                    noteUpdates: {   
+                                        title: noteState.title, 
+                                        description: noteState.description
+                                    },
+                                    setEditMode
+                                });
+                            } else {
+                                CreateNoteForVideo({
+                                    setNotes, 
+                                    newVideo: {   
+                                        userId, 
+                                        videoId, 
+                                        title: noteState.title, 
+                                        description: noteState.description,
+                                        time: playerRef.current.getCurrentTime()
+                                    },
+                                    noteDispatch
+                                });
                             }                        
                         }} 
                         type="submit" className="btn btn-solid-primary btn-sm-size">Save Note</button>
                     
-                    <button onClick={()=>{
-                        if(noteState.id){
-                            setEditMode(false);
-                        }else{
-                            noteDispatch({type:"SET_DESCRIPTION", payload:""});
-                            noteDispatch({type:"SET_TITLE", payload:""})
-                        }
-                    }} type="button" className="btn btn-outline-primary btn-sm-size">Discard</button>
+                    <button 
+                        onClick={()=>{
+                            if(noteState._id){
+                                setEditMode(false);
+                            }else{
+                                noteDispatch({type:"SET_DESCRIPTION", payload:""});
+                                noteDispatch({type:"SET_TITLE", payload:""})
+                            }
+                        }} 
+                    type="button" className="btn btn-outline-primary btn-sm-size">Discard</button>
                 </div>
                 
             </div>

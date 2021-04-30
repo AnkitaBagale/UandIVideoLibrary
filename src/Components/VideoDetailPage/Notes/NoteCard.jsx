@@ -1,14 +1,12 @@
 import { useState } from "react";
-
-import { useStateContext } from "../../../Context";
+import { deleteNoteForVideo } from "../../utils/server-requests";
 import { NoteEditor } from "./NoteEditor";
 import { convertTimeToString } from "./utils";
 
-export const NoteCard = ({note}) =>{
-    const { dispatch } = useStateContext();
-    
+export const NoteCard = ({note, setNotes}) =>{
+
     const [isEditMode, setEditMode] = useState(false);
-    
+
     return(
         <li className="bg-lesslight-pink border-radius-1rem">
             {   
@@ -20,13 +18,22 @@ export const NoteCard = ({note}) =>{
                     <time className="body-cp-sm text-light-weight"> <span className="padding-right-4px"><i className="far fa-clock"></i></span> {convertTimeToString(note.time)}</time>
                     
                     <div className="notes-cta-container">
-                        <button onClick={()=>{setEditMode(true)}} className="btn btn-icon-primary"><i className="fas fa-pencil-alt btn-icon"></i></button>
-                        <button className="btn btn-icon-primary" onClick={()=>dispatch({type:"DELETE_NOTE", payload:note.id})}><i className="fas fa-trash-alt btn-icon"></i></button>
+
+                        <button onClick={()=>{setEditMode(true)}} 
+                            className="btn btn-icon-primary">
+                            <i className="fas fa-pencil-alt btn-icon"></i>
+                        </button>
+
+                        <button className="btn btn-icon-primary" 
+                            onClick={()=>deleteNoteForVideo({setNotes, noteId:note._id})}>
+                            <i className="fas fa-trash-alt btn-icon"></i>
+                        </button>
+
                     </div>
                     
                 </div>) : 
                 (
-                    <NoteEditor note={note} setEditMode={setEditMode} />
+                    <NoteEditor note={note} setEditMode={setEditMode} setNotes={setNotes} />
                 )
             }
             

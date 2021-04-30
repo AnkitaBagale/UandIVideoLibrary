@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useAuthentication, useLanguageContext } from "../../Context";
-import languageChangeSvg  from "./Images/languageChange.svg";
+import { useAuthentication } from "../../Context";
 import "./css/nav.css";
 
-const allLanguages = ["English", "Hindi"];
-
 export const Nav = () => {
-    const { language, setLanguage } = useLanguageContext();
-
+    
     const [ navOpen, setNavOpen ] = useState(false);
-    const [ languageDropdownOpen, setLanguageDropdown] = useState(false);
-    const { isUserLoggedIn, username } = useAuthentication();
+
+    const { username } = useAuthentication();
    
     return (
     <nav className= { navOpen ? "nav-bar shadow-box active" : "nav-bar shadow-box" }>
@@ -109,7 +105,8 @@ export const Nav = () => {
               </span>
             </Link>
           </li>
-          {/* <li>
+          {/* Keeping this commented to use it after language context feat is done
+          <li>
               <button className="language-icon link-no-style dropdown-list-container" onClick={()=>{setLanguageDropdown(flag=>!flag)}}>
                 <img src={languageChangeSvg} alt="change language" />
                 <span className="dropdown-list" style={{display: languageDropdownOpen?"block":"none"}}> 

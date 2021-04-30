@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useStateContext } from "../../../Context";
+import { addOrRemoveFromPlaylist, updatePlaylistInformation } from "../../utils";
+import { deleteEntirePlaylist } from "../../utils/server-requests";
 import { VideoCardHorizontal } from "../utils";
 import { AllPlaylists } from "./AllPlaylists";
 import "./playlists.css";
@@ -10,7 +12,8 @@ export const VideosInPlaylist = ()=>{
     const { state, dispatch } = useStateContext();
     const [ isEditMode, setEditMode ] = useState(false);
     
-    const playlist = state.playlists.find((playlist) => playlist.id === (playlistId) )
+    const playlist = state.playlists.find((playlist) => playlist._id === (playlistId) )
+
     const [ playlistTitle, setPlaylistTitle ] = useState(playlist?.title);
 
     const playlistTitleUpdateForm = (
@@ -20,8 +23,8 @@ export const VideosInPlaylist = ()=>{
             
             <button className="btn btn-solid-primary margin-0" 
             onClick={()=>
-                { dispatch({type:"UPDATE_PLAYLIST", payload: {...playlist, title: playlistTitle}});
-
+                { 
+                updatePlaylistInformation({playlistId, dispatch, title:playlistTitle})
                 setEditMode(false)}
                 }  >Save</button>
             
@@ -53,7 +56,7 @@ export const VideosInPlaylist = ()=>{
                         </button>
                         
                         <button className="btn btn-icon-secondary margin-0 btn-sm-size" 
-                        onClick={()=>{ dispatch({type:"DELETE_PLAYLIST", payload: playlist.id}) }}>
+                        onClick={()=>deleteEntirePlaylist({dispatch, playlistId})}>
                             <i className="fas fa-trash-alt btn-icon"></i>
                         </button>
 
@@ -65,13 +68,12 @@ export const VideosInPlaylist = ()=>{
             <ul className="stacked-list padding-around-1rem scrollbar-styled height-90vh">
                 {playlist.videoList.length===0
                 ? (<div className="p text-center text-regular-weight">No videos added to the playlist</div>)    
-                : playlist.videoList.map((video)=>
-                <li key="video.id" className="badge-container" style={{width:"100%"}}>
+                : playlist.videoList.map(({videoId: video, date})=>
+                <li key={video._id} className="badge-container" style={{width:"100%"}}>
                     <Link className="link-no-style" to={`/explore/${video._id}`}>
-                            <VideoCardHorizontal video = {video} />
+                            <VideoCardHorizontal video = {{...video, date}} />
                     </Link>
-                    <button onClick={()=>{ 
-                        dispatch({type:"ADD_OR_REMOVE_TO_PLAYLIST", payload:  {playlistId: playlist.id, video}}) }} 
+                    <button onClick={()=> addOrRemoveFromPlaylist({playlistId: playlistId, dispatch, videoId: video._id, type: "UPDATE_PLAYLIST"})} 
                         className="btn btn-icon-secondary margin-0 btn-sm-size badge-btn">
                         <i className="fas fa-trash-alt btn-icon"></i>
                     </button>

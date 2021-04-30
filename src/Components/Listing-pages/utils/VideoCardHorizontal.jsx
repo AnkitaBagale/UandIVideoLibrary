@@ -6,7 +6,7 @@ export const VideoCardHorizontal = ({video}) =>{
        return (
         <time className="body-cp-sm text-light-weight">
             <span className="padding-right-4px"><i className="far fa-clock"></i></span>
-            {date.toDateString()}
+            {date}
         </time>
      ) 
     }
@@ -24,7 +24,7 @@ export const VideoCardHorizontal = ({video}) =>{
             <img className="img-responsive card-img" src={video.thumbnail} alt="video" />
             </div>
             <div className="text-container">
-                <div className="text-container-title">
+                <div className="text-container-title padding-right-1rem">
                     <h6>{video.name}</h6>
                 </div>
                 <div className="text-container-desc">

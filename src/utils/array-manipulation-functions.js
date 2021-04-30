@@ -1,19 +1,19 @@
 
 
  export const getVideoDetail = (array, id)=>{
-   return array.find((item)=> item.id === id)
+   return array?.find((item)=> item.id === id)
  }
 
  export const getNoteDetails = (array, videoId) => {
-    return array.filter((item)=> item.videoId === videoId)
+    return array?.filter((item)=> item.videoId === videoId)
  }
 
  export const getPlaylistData = (array, playlistId) => {
-   return array.find((item)=> item.id === playlistId)
+   return array?.find((item)=> item.id === playlistId)
 }
 
  export const isAlreadyAdded = (array, id) =>{
-   return array.find((item)=> item.id === id)
+   return array?.find((item)=> item.videoId._id === id)
  }
 
  export const isAlreadyAddedInPlaylist = (playlists, playlistId, videoId) =>{

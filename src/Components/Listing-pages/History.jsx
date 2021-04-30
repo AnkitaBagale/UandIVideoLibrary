@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useStateContext } from "../../Context";
+import { addOrRemoveFromPlaylist } from "../utils";
+import { clearHistory } from "../utils/server-requests";
 import { VideoCardHorizontal } from "./utils";
 
 export const History = () =>{
  
     const { state:{watchHistory}, dispatch } = useStateContext();
-
+    
     return (
         <>
 
@@ -14,27 +16,25 @@ export const History = () =>{
                 <img className="img-responsive" src="https://i.postimg.cc/TwsBcV04/jess-bailey-l3-N9-Q27z-ULw-unsplash.jpg"  alt="watchhistory" />
                 <div className="text-container">
                     <h2 className="h4 padding-top-1rem">Learning History</h2>
-                    <p>{watchHistory.length} videos</p>
+                    <p>{watchHistory.videoList.length} videos</p>
                     <div className="CTA_Container">
-                        <button className="btn btn-solid-secondary" onClick={()=>{
-                        dispatch({type: "CLEAR_HISTORY"})
-                    }}>Clear History</button>
+                        <button className="btn btn-solid-secondary" onClick={()=>clearHistory({dispatch, playlistId: watchHistory._id})}
+                    >Clear History</button>
                     </div>
                 </div>
                 <div className="filter-divider-line hide-in-desktop"></div>
             </div>
             <ul className="stacked-list padding-around-1rem scrollbar-styled height-90vh">
             {
-            watchHistory.length === 0 
+            watchHistory.videoList.length === 0 
             ? (<li className="text-center p text-regular-weight">No watched videos</li>)
-            :  watchHistory.map(
-                    (video)=> 
-                    <li key="video.id" className="badge-container" style={{width:"100%"}}>  
-                        <Link className="link-no-style" to={`/explore/${video.id}`}>
-                            <VideoCardHorizontal video={video} />
+            :  watchHistory.videoList.map(
+                    ({videoId: video, date})=> 
+                    <li key="video._id" className="badge-container" style={{width:"100%"}}>  
+                        <Link className="link-no-style" to={`/explore/${video._id}`}>
+                            <VideoCardHorizontal video={{...video, date}} />
                         </Link>
-                        <button onClick={()=>{ 
-                            dispatch({type:"REMOVE_FROM_HISTORY", payload:  video.id}) }} 
+                        <button onClick={()=>addOrRemoveFromPlaylist({playlistId: watchHistory._id, dispatch, videoId: video._id, type: "SET_HISTORY"})} 
                             className="btn btn-icon-secondary margin-0 btn-sm-size badge-btn">
                             <i className="fas fa-trash-alt btn-icon"></i>
                         </button>

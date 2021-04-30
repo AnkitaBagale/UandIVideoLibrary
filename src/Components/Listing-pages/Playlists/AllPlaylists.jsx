@@ -34,9 +34,9 @@ export const AllPlaylists = ()=>{
                 {
                     state.playlists.map((playlist)=>{    
                     return (
-                        <Link key={playlist.id} to={{pathname:`/explore/playlists/${playlist.id}`}} className="link-no-style">
+                        <Link key={playlist._id} to={{pathname:`/explore/playlists/${playlist._id}`}} className="link-no-style">
                         <div
-                        key={playlist.id}
+                        key={playlist._id}
                         className="card-vertical card-hover"
                         >
                         <div className="overlay-container">

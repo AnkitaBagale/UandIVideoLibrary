@@ -1,1 +1,1 @@
-export { VideoDetail }  from "./VideoDetail";
+export { VideoDetailPage }  from "./VideoDetailPage";

@@ -1,5 +1,4 @@
 
-import { isAlreadyAdded, addToArray, removeFromArray, isAlreadyAddedInPlaylist } from "../../utils";
 
 export const stateReducer = (state, {type, payload}) =>{
     switch (type){
@@ -7,74 +6,34 @@ export const stateReducer = (state, {type, payload}) =>{
             return { ...state, videos: payload }
         }
 
-        case "ADD_OR_REMOVE_TO_PLAYLIST" : {    
-            if( !isAlreadyAddedInPlaylist(state.playlists, payload.playlistId, payload.video.id) )
-                return { ...state, playlists : state.playlists.map((playlist)=>{
-                                
-                        if(payload.playlistId !== playlist.id)
-                            return playlist 
+        case "SET_PLAYLISTS" : {
+            return { ...state, playlists: payload }
+        }
 
-                        return {...playlist, videoList: addToArray(playlist.videoList, payload.video)}
+        case "SET_HISTORY" : {
+            return { ...state, watchHistory: payload }
+        }
 
-                    }) 
-                }
-            else{
-                return { ...state, playlists : state.playlists.map(
-                    (playlist)=> {if(payload.playlistId !== playlist.id) return playlist
-                    return {...playlist, videoList: playlist.videoList.filter((video)=> video.id!==payload.video.id)}
-                    })
-                }
-            } 
+        case "SET_LIKED_VIDEOS" : {
+            return { ...state, likedVideos: payload }
+        }
 
+        case "SET_WATCH_LATER" : {
+            return { ...state, watchLater: payload }
         }
 
         case "ADD_NEW_PLAYLIST" : {
-            return { ...state, playlists : addToArray(state.playlists, {...payload.playlist, videoList: [payload.video] })}
+            return { ...state, playlists : state.playlists.concat(payload)}
         }
 
         case "UPDATE_PLAYLIST" : {
             return { ...state, playlists : state.playlists.map((item)=>
-                item.id !== payload.id ? item : payload
+                item._id !== payload._id ? item : payload
             )}
         }
 
         case "DELETE_PLAYLIST" : {
-            return { ...state, playlists : removeFromArray(state.playlists, payload)}
-        }
-
-        case "ADD_TO_HISTORY" : {
-            return {...state, watchHistory: addToArray(state.watchHistory,{...payload, date: new Date()}) }
-        }
-
-        case "REMOVE_FROM_HISTORY" : {
-            return {...state, watchHistory: removeFromArray(state.watchHistory,payload) }
-        }
-
-        case "CLEAR_HISTORY" : {
-            return {...state, watchHistory: []}
-        }
-
-        case "ADD_OR_REMOVE_TO_WATCH_LATER" : {
-            return isAlreadyAdded(state.watchLater, payload.id)
-                    ? {...state, watchLater: removeFromArray(state.watchLater, payload.id)}
-                    : {...state, watchLater: addToArray(state.watchLater, payload)}
-        }
-
-        case "ADD_OR_REMOVE_TO_LIKED_VIDEOS" : {
-            return isAlreadyAdded(state.likedVideos, payload.id)
-                    ? {...state, likedVideos: removeFromArray(state.likedVideos, payload.id)}
-                    : {...state, likedVideos: addToArray(state.likedVideos, payload)}
-        }
-
-        case "ADD_NOTE" : {
-            return {...state, notes: addToArray(state.notes, payload)}
-        }
-        case "EDIT_NOTE" : {
-            return {...state, notes: state.notes.map((note)=> note.id!==payload.id ? note : {...note, title: payload.title, description: payload.description} )}
-        }
-        case "DELETE_NOTE" : {
-            return {...state, notes: state.notes.filter((note)=>note.id!==payload)}
-            
+            return { ...state, playlists : state.playlists.filter((playlist)=>playlist._id!==payload)}
         }
 
         default:
