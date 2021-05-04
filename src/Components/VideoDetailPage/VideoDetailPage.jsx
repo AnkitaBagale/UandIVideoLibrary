@@ -34,7 +34,8 @@ export const VideoDetailPage = () => {
 
 	return (
 		<>
-			{videoDetails && (
+			{videoDetails === 'error' && <Navigate to='/error' replace />}
+			{videoDetails !== null && videoDetails !== 'error' && (
 				<div className=' display-flex max-width-do-not-stretch'>
 					<div className='video-details'>
 						<div className='video-container'>
@@ -66,7 +67,6 @@ export const VideoDetailPage = () => {
 					</div>
 				</div>
 			)}
-			{videoDetails === 'error' && <Navigate to='/error' replace />}
 		</>
 	);
 };
