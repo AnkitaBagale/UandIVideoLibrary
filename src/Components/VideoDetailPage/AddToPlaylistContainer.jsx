@@ -9,6 +9,19 @@ export const AddToPlaylistContainer = ({ video, setAddtoPlaylist }) => {
 	const [openAddPlaylistInput, setAddPlaylistInput] = useState(false);
 	const { userId } = useAuthentication();
 
+	const submitFormNewPlaylist = (e) => {
+		e.preventDefault();
+		createNewPlaylist({
+			dispatch,
+			userId,
+			video,
+			title: playlistTitle,
+			setPlaylistTitle,
+		});
+		setAddPlaylistInput(false);
+		setAddtoPlaylist((flag) => !flag);
+	};
+
 	return (
 		<>
 			<button
@@ -63,19 +76,7 @@ export const AddToPlaylistContainer = ({ video, setAddtoPlaylist }) => {
 
 			{openAddPlaylistInput && (
 				<div className='add-new-playlist-input'>
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-							createNewPlaylist({
-								dispatch,
-								userId,
-								video,
-								title: playlistTitle,
-								setPlaylistTitle,
-							});
-							setAddPlaylistInput(false);
-							setAddtoPlaylist((flag) => !flag);
-						}}>
+					<form onSubmit={submitFormNewPlaylist}>
 						<input
 							value={playlistTitle}
 							type='text'

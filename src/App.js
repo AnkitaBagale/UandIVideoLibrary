@@ -23,7 +23,7 @@ import {
 } from './Components';
 
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -45,7 +45,7 @@ export function App() {
 
 				dispatch({ type: 'SET_VIDEOS', payload: response });
 			} catch (error) {
-				toast('Please refresh the page!');
+				toast.error('Please refresh the page!');
 			}
 		})();
 	}, []);
@@ -71,7 +71,7 @@ export function App() {
 					dispatch({ type: 'SET_LIKED_VIDEOS', payload: likedPlaylist });
 					dispatch({ type: 'SET_HISTORY', payload: historyPlaylist });
 				} catch (error) {
-					toast('Please refresh the page!');
+					toast.error('Please refresh the page!');
 				}
 			})();
 		} else {

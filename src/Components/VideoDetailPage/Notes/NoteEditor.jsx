@@ -31,7 +31,6 @@ export const NoteEditor = ({
 				return { ...state, description: payload };
 			}
 			default: {
-				console.log('this case is not handled with reducer');
 				return state;
 			}
 		}
@@ -71,6 +70,15 @@ export const NoteEditor = ({
 		}
 	};
 
+	const discardNote = () => {
+		if (noteState._id) {
+			setEditMode(false);
+		} else {
+			noteDispatch({ type: 'SET_DESCRIPTION', payload: '' });
+			noteDispatch({ type: 'SET_TITLE', payload: '' });
+		}
+	};
+
 	return (
 		<div className='padding-around-1rem'>
 			<div className='row'>
@@ -103,14 +111,7 @@ export const NoteEditor = ({
 				</button>
 
 				<button
-					onClick={() => {
-						if (noteState._id) {
-							setEditMode(false);
-						} else {
-							noteDispatch({ type: 'SET_DESCRIPTION', payload: '' });
-							noteDispatch({ type: 'SET_TITLE', payload: '' });
-						}
-					}}
+					onClick={discardNote}
 					type='button'
 					className='btn btn-outline-primary btn-sm-size'>
 					Discard
