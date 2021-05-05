@@ -1,129 +1,139 @@
-.video-container{
-    width: 100%;
-    height: 24.375rem;
-    margin-top: 1rem;
+.video-container {
+	width: 100%;
+	height: 24.375rem;
+	margin-top: 1rem;
 }
-.max-width-do-not-stretch{
-    max-width: 58.5rem;
-    width: 100%;
-    margin: 2rem auto;
+.max-width-do-not-stretch {
+	max-width: 58.5rem;
+	width: 100%;
+	margin: 2rem auto;
 }
-.video-tutor-details .avatar{
-    margin: 0 1rem 0 0;
+.video-tutor-details .avatar {
+	margin: 0 1rem 0 0;
 }
-.video-tutor-details{
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-}
-
-.filter-divider-line{
-    background-color: #dedddf;
-    border: 0.5px solid #dedddf;
-}
-.primary-divider-line{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 0.5px solid var(--primary-color);
+.video-tutor-details {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 1rem;
 }
 
-.stacked-list li{
-    border: none;
+.filter-divider-line {
+	background-color: #dedddf;
+	border: 0.5px solid #dedddf;
+}
+.primary-divider-line {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0.5px solid var(--primary-color);
 }
 
-.playlist-container{
-    padding: 0.5rem 1rem 0.5rem 0;
-    background-color: var(--bg-light-pink);
-    width: fit-content;
-    max-width: calc(100vw - 1rem);
-    position: absolute;
-    top: 1.5rem;
-    left:0rem;
-    display: flex;
-    flex-direction: column;
+.stacked-list li {
+	border: none;
 }
 
-.add-to-playlist-cta-container{
-    position: relative;
+.playlist-container {
+	padding: 0.5rem 1rem 0.5rem 0;
+	background-color: var(--bg-light-pink);
+	width: fit-content;
+	max-width: calc(100vw - 1rem);
+	position: absolute;
+	top: 1.5rem;
+	left: 0rem;
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+}
+.action-buttons-cta-container {
+	position: relative;
+}
+.action-buttons-cta-container .playlist-container {
+	left: -10rem;
+	top: 2rem;
+	width: 9.25rem;
+}
+.add-to-playlist-cta-container {
+	position: relative;
 }
 
-.playlist-container .btn{
-    margin-top: 0;
-    white-space: nowrap;
+.playlist-container .btn {
+	margin-top: 0;
+	margin-bottom: 0;
+	white-space: nowrap;
+	text-align: left;
 }
-.stacked-list li.margin-0-list-item{
-    margin-bottom: 0;
+.stacked-list li.margin-0-list-item {
+	margin-bottom: 0;
 }
 
-.scroll-bar-styled{
-    overflow: auto;
+.scroll-bar-styled {
+	overflow: auto;
 }
 
 .scroll-bar-styled::-webkit-scrollbar {
-    width: 0.25rem;
+	width: 0.25rem;
 }
 
 .scroll-bar-styled::-webkit-scrollbar-thumb {
-background-color: rgb(216, 215, 216);
+	background-color: rgb(216, 215, 216);
 }
 
 .scroll-bar-styled::-webkit-scrollbar-track {
-background: #edebef;
+	background: #edebef;
 }
-.video-details-section .CTA-Container > .btn{
-    font-size: 1.5rem;
+.video-details-section .CTA-Container > .btn {
+	font-size: 1.5rem;
 }
 .add-to-playlist-cta-container > .btn {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
-.add-new-playlist-input{
-    padding: 1rem 0 1rem 1rem;
-}
-
-.notes-cta-container .btn{
-    margin: 0;
-    padding: 0.5rem;
-    font-size: 0.8rem;
+.add-new-playlist-input {
+	padding: 1rem 0 1rem 1rem;
 }
 
-.video-details{
-    width: 70%;
-    padding: 1rem 2rem 1rem 0rem;
-    box-sizing: border-box;
-}
-.notes-section{
-    width: 30%;
-    height: 24.375rem;
-    margin-top: 2rem;
-    overflow-y: auto;
-    padding-right: 0.25rem;
-}
-.note-text-container time, .note-text-container input{
-    display: block;
-    margin-bottom: 0.25rem;
+.notes-cta-container .btn {
+	margin: 0;
+	padding: 0.5rem;
+	font-size: 0.8rem;
 }
 
-.note-text-container input{
-    width: 100%;
+.video-details {
+	width: 70%;
+	padding: 1rem 2rem 1rem 0rem;
+	box-sizing: border-box;
+}
+.notes-section {
+	width: 30%;
+	height: 24.375rem;
+	margin-top: 2rem;
+	overflow-y: auto;
+	padding-right: 0.25rem;
+}
+.note-text-container time,
+.note-text-container input {
+	display: block;
+	margin-bottom: 0.25rem;
 }
 
+.note-text-container input {
+	width: 100%;
+}
 
-@media screen and (max-width:768px) {
-    .video-container{
-        height: 15.625rem;
-    }
-    .video-tutor-details .avatar{
-        margin: 0 1rem 0 0;
-    }
-    .video-details{
-        width: 100%;
-        padding: 0rem;
-    }
-    .notes-section{
-        width: 100%;
-    }
-    .scroll-visible-in-mobile{
-        overflow-y: visible;
-        height: fit-content;
-    }
+@media screen and (max-width: 768px) {
+	.video-container {
+		height: 15.625rem;
+	}
+	.video-tutor-details .avatar {
+		margin: 0 1rem 0 0;
+	}
+	.video-details {
+		width: 100%;
+		padding: 0rem;
+	}
+	.notes-section {
+		width: 100%;
+	}
+	.scroll-visible-in-mobile {
+		overflow-y: visible;
+		height: fit-content;
+	}
 }

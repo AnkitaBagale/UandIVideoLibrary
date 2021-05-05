@@ -1,92 +1,77 @@
-
-.link-no-style.primary-text-color{
-    color: var(--primary-color);
+.link-no-style.primary-text-color {
+	color: var(--primary-color);
 }
-.burger{
-    z-index: var(--z-index-4);
+.burger {
+	z-index: var(--z-index-4);
 }
-.nav-bar{
-    font-weight: 400;
-}
-
-.primary-text-color .nav-icon{
-    color: var(--primary-color);
-}
-.search-bar{
-    border-radius: 1.5rem;
-}
-.language-icon{
-    margin-left: 1rem;
-    margin-right: 1rem;
-    transition: transform 200ms ease;
-}
-.dropdown-list-container{
-    position: relative;
-}
-.dropdown-list{
-    position: absolute;
-    right: 0;
-    top: 2rem;
-    background-color: #edecee;
-    border-radius: 0.3rem;
-    display: none;
-    padding: 0.7rem 0;
+.nav-bar {
+	font-weight: 400;
 }
 
-
-.language-icon img{
-    width: 2rem;
-    height: 2rem;
+.primary-text-color .nav-icon {
+	color: var(--primary-color);
 }
 
-.dropdown-item{
-    padding: 0.3rem 1.5rem;
+.language-icon {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	transition: transform 200ms ease;
+}
+.dropdown-list-container {
+	position: relative;
+}
+.dropdown-list {
+	position: absolute;
+	right: 0;
+	top: 2rem;
+	background-color: #edecee;
+	border-radius: 0.3rem;
+	display: none;
+	padding: 0.7rem 0;
 }
 
-.dropdown-item:hover{
-    background-color: #e6e6e6;
+.language-icon img {
+	width: 2rem;
+	height: 2rem;
 }
 
-.dropdown-item:not(:last-child){
-    margin-bottom: 0.3rem;
+.dropdown-item {
+	padding: 0.3rem 1.5rem;
 }
- .nav-section {
-    width: 50%;
-  }
-@media screen and (min-width: 1025px) {
-    .search-bar{
-        border: 1px solid;
-    }
-    .search-bar-section{
-        max-width: 400px;
-        width: 100%;
-    }
-   
+
+.dropdown-item:hover {
+	background-color: #e6e6e6;
+}
+
+.dropdown-item:not(:last-child) {
+	margin-bottom: 0.3rem;
+}
+.nav-section {
+	width: 50%;
 }
 
 @media screen and (max-width: 1024px) {
-    .search-bar-btn {
-        font-size: 1.3rem;
-    }
-    .padding-right-1rem-in-mobile{
-        padding-right: 1rem;
-    }
-    .nav-bar{
-        min-height: 5vh;
-    }  
-    
-    .nav-icon{
-        color: #464a5a;
-        width: 1.2rem;
-        height: 1.2rem;
-        font-size: 1.2rem;
-        display: inline-block;
-    }
-    .nav-section {
-        width: auto;
-      }
+	.padding-right-1rem-in-mobile {
+		padding-right: 1rem;
+	}
+	.nav-bar {
+		min-height: 5vh;
+		padding: 1rem 1rem 0 0rem;
+	}
 
-      .nav-icon-link.avatar{
-          margin: 0;
-      }
+	.nav-icon {
+		color: #464a5a;
+		width: 1.2rem;
+		height: 1.2rem;
+		font-size: 1.2rem;
+		display: inline-block;
+	}
+	.nav-section {
+		width: auto;
+		margin-bottom: 3rem;
+	}
+
+	.nav-icon-link.avatar {
+		margin: 0;
+	}
 }
