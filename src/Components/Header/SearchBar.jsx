@@ -54,6 +54,7 @@ export const SearchBar = () => {
 					onClick={() => {
 						if (searchTerm !== '') {
 							navigate(`/search?searchTerm=${encodeURIComponent(searchTerm)}`);
+							setSearchTerm('');
 							setSearchIconActive(false);
 						}
 					}}>

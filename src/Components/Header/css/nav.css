@@ -49,7 +49,9 @@
 .nav-section {
 	width: 50%;
 }
-
+.space-no-wrap {
+	white-space: nowrap;
+}
 @media screen and (max-width: 1024px) {
 	.padding-right-1rem-in-mobile {
 		padding-right: 1rem;

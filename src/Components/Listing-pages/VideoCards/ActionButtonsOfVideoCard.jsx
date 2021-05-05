@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { useStateContext } from '../../../Context';
+import { toast } from 'react-toastify';
+import { useAuthentication, useStateContext } from '../../../Context';
 import { isAlreadyAdded } from '../../../utils';
 import { addOrRemoveFromPlaylist } from '../../utils';
 import '../../VideoDetailPage/video-detail.css';
+
+const toastOptions = { autoClose: 2000, className: 'toast toast-inform' };
 
 export const ActionButtonsOfVideoCard = ({ video }) => {
 	const {
@@ -10,7 +13,22 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 		dispatch,
 	} = useStateContext();
 
+	const { isUserLoggedIn } = useAuthentication();
+
 	const [openContainer, setContainer] = useState(false);
+
+	const addOrRemoveVideo = ({ playlistId, type }) => {
+		if (isUserLoggedIn) {
+			addOrRemoveFromPlaylist({
+				playlistId,
+				dispatch,
+				videoId: video._id,
+				type,
+			});
+		} else {
+			toast.info('Sign up to proceed !', toastOptions);
+		}
+	};
 	return (
 		<div className='action-buttons-cta-container'>
 			<button
@@ -23,14 +41,12 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 				<div className='playlist-container scroll-bar-styled shadow-box'>
 					<button
 						className='btn btn-text-icon-secondary'
-						onClick={() => {
-							addOrRemoveFromPlaylist({
+						onClick={() =>
+							addOrRemoveVideo({
 								playlistId: watchLater._id,
-								dispatch,
-								videoId: video._id,
 								type: 'SET_WATCH_LATER',
-							});
-						}}>
+							})
+						}>
 						<i
 							className={
 								isAlreadyAdded(watchLater.videoList, video._id)
@@ -42,10 +58,8 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 					<button
 						className='btn btn-text-icon-secondary'
 						onClick={() =>
-							addOrRemoveFromPlaylist({
+							addOrRemoveVideo({
 								playlistId: likedVideos._id,
-								dispatch,
-								videoId: video._id,
 								type: 'SET_LIKED_VIDEOS',
 							})
 						}>

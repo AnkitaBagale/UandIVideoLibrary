@@ -3,6 +3,7 @@ import { useStateContext } from '../../Context';
 import { VideoCard } from './VideoCards';
 import { types } from '../../database';
 import './styles.css';
+import Loader from 'react-loader-spinner';
 
 export const AllVideos = () => {
 	const { state } = useStateContext();
@@ -26,7 +27,7 @@ export const AllVideos = () => {
 				))}
 			</div>
 
-			{state.videos.length !== 0 && (
+			{state.videos.length !== 0 ? (
 				<div className='grid-4-column-layout grid-right-of-filter padding-around-1rem'>
 					{searchQuery === 'All'
 						? state.videos.map((video) => (
@@ -35,6 +36,10 @@ export const AllVideos = () => {
 						: state.videos
 								.filter((item) => item.type === searchQuery)
 								.map((video) => <VideoCard key={video._id} video={video} />)}
+				</div>
+			) : (
+				<div className='overlay-text'>
+					<Loader type='TailSpin' color='#ff3f6c' height={80} width={80} />
 				</div>
 			)}
 		</>

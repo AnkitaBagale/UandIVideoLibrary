@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
+import Loader from 'react-loader-spinner';
 import { VideoDetailsSection } from './VideoDetailsSection';
 import { useStateContext } from '../../Context';
 import { NotesContainer } from './Notes';
@@ -65,6 +66,12 @@ export const VideoDetailPage = () => {
 						id='note-section'>
 						<NotesContainer videoId={videoDetails._id} playerRef={playerRef} />
 					</div>
+				</div>
+			)}
+
+			{videoDetails === null && (
+				<div className='overlay-text'>
+					<Loader type='TailSpin' color='#ff3f6c' height={80} width={80} />
 				</div>
 			)}
 		</>

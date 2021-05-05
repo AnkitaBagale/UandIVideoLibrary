@@ -22,6 +22,11 @@ import {
 	ErrorPage,
 } from './Components';
 
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -37,9 +42,10 @@ export function App() {
 				const {
 					data: { response },
 				} = await axios.get('https://uandistoreapi.herokuapp.com/videos');
+
 				dispatch({ type: 'SET_VIDEOS', payload: response });
 			} catch (error) {
-				console.log(error);
+				toast('Please refresh the page!');
 			}
 		})();
 	}, []);
@@ -65,7 +71,7 @@ export function App() {
 					dispatch({ type: 'SET_LIKED_VIDEOS', payload: likedPlaylist });
 					dispatch({ type: 'SET_HISTORY', payload: historyPlaylist });
 				} catch (error) {
-					console.log(error);
+					toast('Please refresh the page!');
 				}
 			})();
 		} else {
@@ -77,6 +83,7 @@ export function App() {
 			<div className='grid-item-nav'>
 				<Nav />
 			</div>
+			<ToastContainer />
 
 			<div className='app-container grid-item-main'>
 				<Routes>

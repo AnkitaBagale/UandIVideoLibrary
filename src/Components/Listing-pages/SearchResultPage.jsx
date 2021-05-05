@@ -14,9 +14,7 @@ export const SearchResultPage = () => {
 	const filterdData = videos.filter(
 		({ name, type }) =>
 			name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			searchTerm.toLowerCase().includes(name.toLowerCase()) ||
-			searchTerm.toLowerCase().includes(type.toLowerCase()),
+			type.toLowerCase().includes(searchTerm.toLowerCase()),
 	);
 	const numberOfItems = filterdData.length;
 	return (

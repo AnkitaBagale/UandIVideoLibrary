@@ -134,13 +134,13 @@ export const Nav = () => {
 			<div className='nav-section search-bar-section'>
 				<SearchBar />
 
-				<ul className='nav-icons list-style-none nav-section-item-width50pc hide-in-mobile'>
+				<ul className='nav-icons list-style-none padding-left-1rem hide-in-mobile'>
 					<li className='list-inline-item hide-profile-mobile'>
 						<Link to='/profile' className='nav-icon-link link-no-style'>
 							<span className='nav-icon'>
 								<i className='fas fa-user'></i>
 							</span>
-							<span className='nav-icon-text'>
+							<span className='nav-icon-text space-no-wrap'>
 								{username ? `Hi, ${username}` : 'Login'}
 							</span>
 						</Link>
