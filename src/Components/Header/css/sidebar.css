@@ -1,0 +1,41 @@
+
+.sidebar{
+    overflow-y: auto;
+    position: sticky;
+    top: 0rem;
+    left: 0;
+    width: 6.25rem;
+    height: 100vh;
+    background-color: white;
+}
+
+.sidebar-arrow{
+    display: none;
+}
+
+.nav-title{
+    margin-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.nav-links{
+    padding-inline-start: 0;
+    list-style: none;
+}
+.nav-link-item:hover{
+    background-color: var(--docSite-sec-color);
+}
+.nav-link-item>a{
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    padding: 0.6rem 2rem;
+}
+
+@media screen and (max-width: 1024px){
+
+  .sidebar{
+      display: none;
+  }
+
+}
