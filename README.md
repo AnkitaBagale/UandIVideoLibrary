@@ -35,3 +35,5 @@ Functionalities-
    - Delete note
 
 React- Reducer+Context, Router, Backend with express js and MongoDB
+
+https://deploy-preview-1--u-and-i-video-library.netlify.app/
