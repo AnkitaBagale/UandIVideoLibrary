@@ -14,6 +14,7 @@ Functionalities-
 - Filter by category
 - Authentication
 - Responsive design
+- Loader, toast, error page
 
 1. Authentication
 
