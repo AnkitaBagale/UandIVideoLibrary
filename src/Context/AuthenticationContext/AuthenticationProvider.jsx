@@ -44,6 +44,7 @@ export const AuthenticationProvider = ({ children }) => {
 				navigate(from);
 			}
 		} catch (error) {
+			console.error(error);
 			return error.response;
 		}
 	};
@@ -77,6 +78,7 @@ export const AuthenticationProvider = ({ children }) => {
 				return { status };
 			}
 		} catch (error) {
+			console.error(error);
 			return error.response;
 		}
 	};
@@ -107,15 +109,18 @@ export const AuthenticationProvider = ({ children }) => {
 				return { status };
 			}
 		} catch (error) {
+			console.error(error);
 			return error.response;
 		}
 	};
 
-	const logOutUser = () => {
+	const logOutUser = (dispatch) => {
 		localStorage?.removeItem('session');
 		setUsername('');
 		setUserId('');
 		setLogin(false);
+		setUserDetails(null);
+		dispatch({ type: 'RESET_DATA_ON_LOGOUT' });
 	};
 	return (
 		<AuthenticationContext.Provider

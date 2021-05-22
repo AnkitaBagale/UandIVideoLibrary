@@ -29,6 +29,7 @@ export const addOrRemoveFromPlaylist = async ({
 		dispatch({ type, payload: response });
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -52,6 +53,7 @@ export const updatePlaylistInformation = async ({
 		dispatch({ type: 'UPDATE_PLAYLIST', payload: response });
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -68,6 +70,7 @@ export const deleteEntirePlaylist = async ({ dispatch, playlistId }) => {
 		dispatch({ type: 'DELETE_PLAYLIST', payload: response._id });
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -97,6 +100,7 @@ export const createNewPlaylist = async ({
 		setPlaylistTitle('');
 		toast.success('Playlist created and video added !', successToastOptions);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -117,6 +121,7 @@ export const clearHistory = async ({ playlistId, dispatch }) => {
 		dispatch({ type: 'SET_HISTORY', payload: response });
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -130,6 +135,7 @@ export const getNotesForVideo = async ({ userId, videoId, setNotes }) => {
 
 		setNotes(response);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please refresh page !', errorToastOptions);
 	}
 };
@@ -149,6 +155,7 @@ export const CreateNoteForVideo = async ({
 		noteDispatch({ type: 'SET_TITLE', payload: '' });
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -174,6 +181,7 @@ export const UpdateNoteForVideo = async ({
 		setEditMode(false);
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };
@@ -190,6 +198,7 @@ export const deleteNoteForVideo = async ({ noteId, setNotes }) => {
 		setNotes((notes) => notes.filter((note) => note._id !== response._id));
 		toast.dismiss(toastId);
 	} catch (error) {
+		console.error(error);
 		toast.error('Please try later !', errorToastOptions);
 	}
 };

@@ -1,12 +1,15 @@
-import { useAuthentication } from "../../../Context";
+import { useAuthentication, useStateContext } from '../../../Context';
 
 export const Settings = () => {
-  const { logOutUser } = useAuthentication();
-  return (
-    <div className="CTA-Container">
-      <button className="btn btn-solid-primary" onClick={logOutUser}>
-        Log out
-      </button>
-    </div>
-  );
+	const { logOutUser } = useAuthentication();
+	const { dispatch } = useStateContext();
+	return (
+		<div className='CTA-Container'>
+			<button
+				className='btn btn-solid-primary'
+				onClick={() => logOutUser(dispatch)}>
+				Log out
+			</button>
+		</div>
+	);
 };
