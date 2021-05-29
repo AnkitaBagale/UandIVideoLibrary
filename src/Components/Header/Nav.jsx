@@ -7,7 +7,9 @@ import { SearchBar } from './SearchBar';
 export const Nav = () => {
 	const [navOpen, setNavOpen] = useState(false);
 
-	const { username } = useAuthentication();
+	const {
+		state: { userName },
+	} = useAuthentication();
 
 	return (
 		<nav
@@ -61,7 +63,7 @@ export const Nav = () => {
 
 					<li className='list-inline-item hide-in-desktop'>
 						<NavLink
-							to='/explore'
+							to='/'
 							end
 							activeClassName='primary-text-color'
 							className='link-no-style'>
@@ -141,7 +143,7 @@ export const Nav = () => {
 								<i className='fas fa-user'></i>
 							</span>
 							<span className='nav-icon-text space-no-wrap'>
-								{username ? `Hi, ${username}` : 'Login'}
+								{userName ? `Hi, ${userName}` : 'Login'}
 							</span>
 						</Link>
 					</li>

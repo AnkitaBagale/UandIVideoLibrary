@@ -1,46 +1,59 @@
 import axios from 'axios';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../utils';
+import { authenticationReducer } from './authentication.reducer';
 
 const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = ({ children }) => {
-	const [isUserLoggedIn, setLogin] = useState(false);
-	const [username, setUsername] = useState('');
-	const [userId, setUserId] = useState('');
-	const [userDetails, setUserDetails] = useState(null);
-	const [addressDetails, setAddressDetails] = useState(null);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const loginDetails = JSON.parse(localStorage?.getItem('session'));
-		loginDetails?.login && setLogin(true);
-		loginDetails?.username && setUsername(loginDetails.username);
-		loginDetails?.userId && setUserId(loginDetails.userId);
-	}, []);
+	const { userName: userNameDetails, token: tokenDetails } = JSON.parse(
+		localStorage.getItem('session'),
+	) || {
+		userName: '',
+		token: '',
+	};
+
+	const initialState = {
+		token: tokenDetails,
+		userName: userNameDetails,
+		userDetails: null,
+		addressDetails: null,
+	};
+
+	const [state, dispatch] = useReducer(authenticationReducer, initialState);
 
 	const loginUser = async ({ email, password, from }) => {
 		try {
 			const {
 				data: {
-					response: { firstname, userId },
+					response: { firstname, token },
 				},
 				status,
 			} = await axios({
 				method: 'POST',
-				url: 'https://uandistoreapi.herokuapp.com/users/authenticate',
+				url: `${API_URL}/users/authenticate`,
 				headers: { email: email, password: password },
 			});
 
 			if (status === 200) {
 				localStorage?.setItem(
 					'session',
-					JSON.stringify({ login: true, username: firstname, userId: userId }),
+					JSON.stringify({
+						login: true,
+						userName: firstname,
+						token: token,
+					}),
 				);
 
-				setUsername(firstname);
-				setUserId(userId);
-				setLogin(true);
+				dispatch({
+					type: 'LOGIN_USER',
+					payload: { userName: firstname, token },
+				});
+
+				axios.defaults.headers.common['Authorization'] = token;
 				navigate(from);
 			}
 		} catch (error) {
@@ -51,9 +64,12 @@ export const AuthenticationProvider = ({ children }) => {
 
 	const signUpNewUser = async ({ email, password, firstname, lastname }) => {
 		try {
-			const { data, status } = await axios({
+			const {
+				data: { message },
+				status,
+			} = await axios({
 				method: 'POST',
-				url: 'https://uandistoreapi.herokuapp.com/users',
+				url: `${API_URL}/users`,
 				data: {
 					firstname: firstname,
 					lastname: lastname,
@@ -62,80 +78,47 @@ export const AuthenticationProvider = ({ children }) => {
 				},
 			});
 
-			if (status === 201) {
-				localStorage?.setItem(
-					'session',
-					JSON.stringify({
-						login: true,
-						username: data.response.firstname,
-						userId: data.response.userId,
-					}),
-				);
-
-				setUsername(data.response.firstname);
-				setUserId(data.response.userId);
-				setLogin(true);
-				return { status };
-			}
+			return { status };
 		} catch (error) {
-			console.error(error);
+			console.log(error);
 			return error.response;
 		}
 	};
 
-	const updateUserDetails = async ({ email, ...body }) => {
+	const updateUserDetails = async ({ email, password }) => {
 		try {
-			const { data, status } = await axios({
+			const { status } = await axios({
 				method: 'POST',
-				url: `https://uandistoreapi.herokuapp.com/users/${email}`,
+				url: `${API_URL}/users/self`,
 				data: {
-					...body,
+					email,
+					password,
 				},
 			});
 
 			if (status === 200) {
-				localStorage?.setItem(
-					'session',
-					JSON.stringify({
-						login: true,
-						username: data.response.firstname,
-						userId: data.response.userId,
-					}),
-				);
-
-				setUsername(data.response.firstname);
-				setUserId(data.response.userId);
-				setLogin(true);
 				return { status };
 			}
 		} catch (error) {
-			console.error(error);
+			console.log(error);
 			return error.response;
 		}
 	};
 
-	const logOutUser = (dispatch) => {
+	const logOutUser = () => {
+		delete axios.defaults.headers.common['Authorization'];
 		localStorage?.removeItem('session');
-		setUsername('');
-		setUserId('');
-		setLogin(false);
-		setUserDetails(null);
-		dispatch({ type: 'RESET_DATA_ON_LOGOUT' });
+		dispatch({ type: 'LOGOUT_USER' });
 	};
 	return (
 		<AuthenticationContext.Provider
 			value={{
-				isUserLoggedIn,
 				loginUser,
-				username,
 				logOutUser,
 				signUpNewUser,
 				updateUserDetails,
-				userId,
-				userDetails,
-				setUserDetails,
-				addressDetails,
-				setAddressDetails,
+				state,
+				dispatch,
 			}}>
 			{children}
 		</AuthenticationContext.Provider>

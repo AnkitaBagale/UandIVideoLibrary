@@ -6,12 +6,14 @@ import { getNotesForVideo } from '../../utils/server-requests';
 import { NoteEditor } from './NoteEditor';
 
 export const NotesContainer = ({ videoId, playerRef }) => {
-	const { userId } = useAuthentication();
+	const {
+		state: { token },
+	} = useAuthentication();
 	const [noteDetails, setNotes] = useState([]);
 
 	useEffect(() => {
-		if (userId) {
-			getNotesForVideo({ userId, videoId, setNotes });
+		if (token) {
+			getNotesForVideo({ token, videoId, setNotes });
 		}
 	}, []);
 

@@ -24,7 +24,7 @@ export const InputPasswordField = ({
         onClick={() => {
           setHidePassword((flag) => !flag);
         }}
-        tabIndex = {-1}
+        tabIndex={-1}
       >
         <i
           className={

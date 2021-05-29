@@ -13,17 +13,20 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 		dispatch,
 	} = useStateContext();
 
-	const { isUserLoggedIn } = useAuthentication();
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	const [openContainer, setContainer] = useState(false);
 
-	const addOrRemoveVideo = ({ playlistId, type }) => {
-		if (isUserLoggedIn) {
+	const addOrRemoveVideo = ({ playlistId, type, token }) => {
+		if (token) {
 			addOrRemoveFromPlaylist({
 				playlistId,
 				dispatch,
 				videoId: video._id,
 				type,
+				token,
 			});
 		} else {
 			toast.info('Sign up to proceed !', toastOptions);
@@ -45,6 +48,7 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 							addOrRemoveVideo({
 								playlistId: watchLater._id,
 								type: 'SET_WATCH_LATER',
+								token,
 							})
 						}>
 						<i
@@ -61,6 +65,7 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 							addOrRemoveVideo({
 								playlistId: likedVideos._id,
 								type: 'SET_LIKED_VIDEOS',
+								token,
 							})
 						}>
 						<i

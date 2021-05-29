@@ -31,27 +31,31 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useAuthentication, useStateContext } from './Context';
+import { API_URL } from './utils';
 
 export function App() {
 	const { dispatch } = useStateContext();
-	const { isUserLoggedIn, userId } = useAuthentication();
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	useEffect(() => {
 		(async () => {
 			try {
 				const {
 					data: { response },
-				} = await axios.get('https://uandistoreapi.herokuapp.com/videos');
+				} = await axios.get(`${API_URL}/videos`);
 
 				dispatch({ type: 'SET_VIDEOS', payload: response });
 			} catch (error) {
+				console.log(error);
 				toast.error('Please refresh the page!');
 			}
 		})();
 	}, []);
 
 	useEffect(() => {
-		if (isUserLoggedIn) {
+		if (token) {
 			(async () => {
 				try {
 					const {
@@ -63,20 +67,25 @@ export function App() {
 								historyPlaylist,
 							},
 						},
-					} = await axios.get(
-						`https://uandistoreapi.herokuapp.com/users/${userId}/playlists`,
-					);
+					} = await axios({
+						url: `${API_URL}/playlists`,
+						method: 'GET',
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					});
 					dispatch({ type: 'SET_PLAYLISTS', payload: customPlaylist });
 					dispatch({ type: 'SET_WATCH_LATER', payload: watchlaterPlaylist });
 					dispatch({ type: 'SET_LIKED_VIDEOS', payload: likedPlaylist });
 					dispatch({ type: 'SET_HISTORY', payload: historyPlaylist });
 				} catch (error) {
+					console.log(error);
 					toast.error('Please refresh the page!');
 				}
 			})();
 		} else {
 		}
-	}, [isUserLoggedIn]);
+	}, [token]);
 
 	return (
 		<div className='App page-grid-layout'>

@@ -7,13 +7,15 @@ export const AddToPlaylistContainer = ({ video, setAddtoPlaylist }) => {
 	const { state, dispatch } = useStateContext();
 	const [playlistTitle, setPlaylistTitle] = useState('');
 	const [openAddPlaylistInput, setAddPlaylistInput] = useState(false);
-	const { userId } = useAuthentication();
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	const submitFormNewPlaylist = (e) => {
 		e.preventDefault();
 		createNewPlaylist({
 			dispatch,
-			userId,
+			token,
 			video,
 			title: playlistTitle,
 			setPlaylistTitle,
@@ -32,6 +34,7 @@ export const AddToPlaylistContainer = ({ video, setAddtoPlaylist }) => {
 						dispatch,
 						videoId: video._id,
 						type: 'SET_WATCH_LATER',
+						token,
 					});
 					setAddtoPlaylist((flag) => !flag);
 				}}>
@@ -53,6 +56,7 @@ export const AddToPlaylistContainer = ({ video, setAddtoPlaylist }) => {
 							dispatch,
 							videoId: video._id,
 							type: 'UPDATE_PLAYLIST',
+							token,
 						});
 						setAddtoPlaylist((flag) => !flag);
 					}}>

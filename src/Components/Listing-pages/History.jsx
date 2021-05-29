@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useStateContext } from '../../Context';
+import { useAuthentication, useStateContext } from '../../Context';
 import { addOrRemoveFromPlaylist } from '../utils';
 import { clearHistory } from '../utils/server-requests';
 import { VideoCardHorizontal } from './VideoCards';
@@ -9,6 +9,10 @@ export const History = () => {
 		state: { watchHistory },
 		dispatch,
 	} = useStateContext();
+
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	return (
 		<>
@@ -26,7 +30,11 @@ export const History = () => {
 							<button
 								className='btn btn-solid-secondary'
 								onClick={() =>
-									clearHistory({ dispatch, playlistId: watchHistory._id })
+									clearHistory({
+										dispatch,
+										playlistId: watchHistory._id,
+										token,
+									})
 								}>
 								Clear History
 							</button>
@@ -55,6 +63,7 @@ export const History = () => {
 											dispatch,
 											videoId: video._id,
 											type: 'SET_HISTORY',
+											token,
 										})
 									}
 									className='btn btn-icon-secondary margin-0 btn-sm-size badge-btn'>

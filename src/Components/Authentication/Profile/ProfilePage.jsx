@@ -2,10 +2,13 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuthentication } from '../../../Context';
-import { toast } from 'react-toastify';
+import { API_URL } from '../../../utils';
 import './profile.css';
 export const ProfilePage = () => {
-	const { userId, setUserDetails, userDetails } = useAuthentication();
+	const {
+		state: { userDetails, token },
+		dispatch,
+	} = useAuthentication();
 
 	useEffect(() => {
 		if (!userDetails) {
@@ -14,25 +17,30 @@ export const ProfilePage = () => {
 					const {
 						data: { response },
 						status,
-					} = await axios.get(
-						`https://uandistoreapi.herokuapp.com/users/${userId}`,
-					);
-
+					} = await axios.get(`${API_URL}/users/self`, {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					});
+					console.log(response);
 					if (status === 200) {
-						setUserDetails(response);
+						dispatch({
+							type: 'SET_USER_DETAILS',
+							payload: { userDetails: response },
+						});
 					}
 				} catch (error) {
-					toast.error('Please refresh the page!');
+					console.log(error);
 				}
 			})();
 		}
-	}, []);
+	}, [token]);
 
 	return (
 		<div className='user-profile-container padding-around-1rem'>
 			<h1 className='h4 text-center padding-bottom-1rem'>Account</h1>
-			<div className='filter-divider-line margin-bottom-1rem'></div>
-			<div className='display-flex'>
+			<div className='filter-divider-line'></div>
+			<div className='display-flex margin-top-1rem'>
 				<div className='column-20-pc column1 border-right-2px '>
 					<ul className='styled-list list-style-none margin-1rem'>
 						<li>

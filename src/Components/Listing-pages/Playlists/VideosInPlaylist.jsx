@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { useStateContext } from '../../../Context';
+import { useAuthentication, useStateContext } from '../../../Context';
 import {
 	addOrRemoveFromPlaylist,
 	updatePlaylistInformation,
@@ -20,6 +20,9 @@ export const VideosInPlaylist = () => {
 	);
 
 	const [playlistTitle, setPlaylistTitle] = useState(playlist?.title);
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	const playlistTitleUpdateForm = (
 		<div>
@@ -38,6 +41,7 @@ export const VideosInPlaylist = () => {
 							playlistId,
 							dispatch,
 							title: playlistTitle,
+							token,
 						});
 						setEditMode(false);
 					}}>
@@ -88,7 +92,7 @@ export const VideosInPlaylist = () => {
 								<button
 									className='btn btn-icon-secondary margin-0 btn-sm-size'
 									onClick={() =>
-										deleteEntirePlaylist({ dispatch, playlistId })
+										deleteEntirePlaylist({ dispatch, playlistId, token })
 									}>
 									<i className='fas fa-trash-alt btn-icon'></i>
 								</button>
@@ -117,6 +121,7 @@ export const VideosInPlaylist = () => {
 												dispatch,
 												videoId: video._id,
 												type: 'UPDATE_PLAYLIST',
+												token,
 											})
 										}
 										className='btn btn-icon-secondary margin-0 btn-sm-size badge-btn'>

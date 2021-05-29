@@ -1,15 +1,22 @@
 import { useReducer, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 
-import { InputPasswordField } from './InputPasswordField';
+import { InputPasswordField } from '../InputPasswordField';
 import Loader from 'react-loader-spinner';
-import { useAuthentication } from '../../Context';
+import { useAuthentication } from '../../../Context';
 
 export const SignUp = () => {
 	const [error, setError] = useState('');
 	const [isLoading, setLoading] = useState(false);
 	const [showSuccess, setSuccess] = useState(false);
-	const { signUpNewUser, isUserLoggedIn } = useAuthentication();
+
+	const { state } = useLocation();
+
+	const navigateToPathState = { from: state?.from ? state.from : '/' };
+	const {
+		signUpNewUser,
+		state: { token },
+	} = useAuthentication();
 
 	const errorsInitialState = {
 		emailError: '',
@@ -151,7 +158,7 @@ export const SignUp = () => {
 				email,
 				password,
 			});
-			if (response.status === 201) {
+			if (response?.status === 201) {
 				setLoading(false);
 				setSuccess(true);
 			} else {
@@ -165,7 +172,7 @@ export const SignUp = () => {
 
 	return (
 		<>
-			{isUserLoggedIn ? (
+			{token ? (
 				<Navigate to='/profile' replace />
 			) : (
 				<div className='form-container shadow-box overlay-container'>
@@ -173,7 +180,7 @@ export const SignUp = () => {
 						<>
 							<h1 className='h4 text-center'>SIGN UP</h1>
 							<p className='text-center padding-bottom-1rem'>
-								Sign up to start watching right now, completely free!
+								Fill below form to sign up and enjoy special offers in U&I store
 							</p>
 							<form className='submit-form-example display-flex-column'>
 								<div className='row'>
@@ -395,11 +402,12 @@ export const SignUp = () => {
 					) : (
 						<div className='text-center'>
 							<h5>Thank you for signing up!</h5>
-							<p className='body-cp-lg'>
-								Welcome to your new learning journey with U&I Videos!
-							</p>
-							<Link to={'/explore'} className='btn btn-solid-primary'>
-								Start Now
+							<p className='body-cp-lg'>Please login to continue.</p>
+							<Link
+								to={'/login'}
+								state={navigateToPathState}
+								className='btn btn-solid-primary'>
+								Login
 							</Link>
 						</div>
 					)}

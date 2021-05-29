@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useStateContext } from '../../Context';
+import { useAuthentication, useStateContext } from '../../Context';
 import { addOrRemoveFromPlaylist } from '../utils';
 import { VideoCardHorizontal } from './VideoCards';
 
@@ -8,6 +8,10 @@ export const WatchLater = () => {
 		state: { watchLater },
 		dispatch,
 	} = useStateContext();
+
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	return (
 		<>
@@ -45,6 +49,7 @@ export const WatchLater = () => {
 											dispatch,
 											videoId: video._id,
 											type: 'SET_WATCH_LATER',
+											token,
 										})
 									}
 									className='btn btn-icon-secondary margin-0 btn-sm-size badge-btn'>

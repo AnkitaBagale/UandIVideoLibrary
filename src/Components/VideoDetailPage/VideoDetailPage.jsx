@@ -4,10 +4,11 @@ import ReactPlayer from 'react-player';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 import { VideoDetailsSection } from './VideoDetailsSection';
-import { useStateContext } from '../../Context';
+import { useAuthentication, useStateContext } from '../../Context';
 import { NotesContainer } from './Notes';
 import { addOrRemoveFromPlaylist } from '../utils';
 import './video-detail.css';
+import { API_URL } from '../../utils';
 
 export const VideoDetailPage = () => {
 	const {
@@ -18,6 +19,9 @@ export const VideoDetailPage = () => {
 	const navigate = useNavigate();
 	const playerRef = useRef(null);
 	let { id } = useParams();
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	useEffect(() => {
 		(async () => {
@@ -25,9 +29,13 @@ export const VideoDetailPage = () => {
 				const {
 					data: { response },
 					status,
-				} = await axios.get(`https://uandistoreapi.herokuapp.com/videos/${id}`);
+				} = await axios({
+					method: 'GET',
+					url: `${API_URL}/videos/${id}`,
+				});
 				setVideoDetails(response);
 			} catch (error) {
+				console.log(error);
 				setVideoDetails('error');
 			}
 		})();
@@ -52,6 +60,7 @@ export const VideoDetailPage = () => {
 										dispatch,
 										videoId: id,
 										type: 'SET_HISTORY',
+										token,
 									});
 								}}
 							/>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useStateContext } from '../../Context';
+import { useAuthentication, useStateContext } from '../../Context';
 import { addOrRemoveFromPlaylist } from '../utils';
 import { VideoCardHorizontal } from './VideoCards';
 
@@ -8,6 +8,9 @@ export const LikedVideos = () => {
 		state: { likedVideos },
 		dispatch,
 	} = useStateContext();
+	const {
+		state: { token },
+	} = useAuthentication();
 
 	return (
 		<>
@@ -45,6 +48,7 @@ export const LikedVideos = () => {
 											dispatch,
 											videoId: video._id,
 											type: 'SET_LIKED_VIDEOS',
+											token,
 										})
 									}
 									className='btn btn-icon-secondary margin-0 btn-sm-size badge-btn'>

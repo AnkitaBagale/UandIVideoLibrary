@@ -21,7 +21,9 @@ export const NoteEditor = ({
 	playerRef,
 	videoId,
 }) => {
-	const { userId } = useAuthentication();
+	const {
+		state: { token },
+	} = useAuthentication();
 	const noteReducer = (state, { type, payload }) => {
 		switch (type) {
 			case 'SET_TITLE': {
@@ -39,7 +41,7 @@ export const NoteEditor = ({
 	const [noteState, noteDispatch] = useReducer(noteReducer, note);
 
 	const editOrAddNote = () => {
-		if (!userId) {
+		if (!token) {
 			toast.info('Sign up to proceed !', toastOptions);
 			return;
 		}
@@ -53,18 +55,19 @@ export const NoteEditor = ({
 						description: noteState.description,
 					},
 					setEditMode,
+					token,
 				});
 			} else {
 				CreateNoteForVideo({
 					setNotes,
 					newVideo: {
-						userId,
 						videoId,
 						title: noteState.title,
 						description: noteState.description,
 						time: playerRef.current.getCurrentTime(),
 					},
 					noteDispatch,
+					token,
 				});
 			}
 		}

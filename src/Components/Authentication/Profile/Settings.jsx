@@ -5,9 +5,7 @@ export const Settings = () => {
 	const { dispatch } = useStateContext();
 	return (
 		<div className='CTA-Container'>
-			<button
-				className='btn btn-solid-primary'
-				onClick={() => logOutUser(dispatch)}>
+			<button className='btn btn-solid-primary' onClick={() => logOutUser()}>
 				Log out
 			</button>
 		</div>
