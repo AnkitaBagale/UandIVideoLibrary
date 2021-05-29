@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils';
 import { authenticationReducer } from './authentication.reducer';
+import { setupAuthenticationErrorHandler } from './utils/setupAthenticationErrorHandler';
 
 const AuthenticationContext = createContext();
 
@@ -110,6 +111,9 @@ export const AuthenticationProvider = ({ children }) => {
 		localStorage?.removeItem('session');
 		dispatch({ type: 'LOGOUT_USER' });
 	};
+	useEffect(() => {
+		setupAuthenticationErrorHandler(logOutUser, navigate);
+	}, []);
 	return (
 		<AuthenticationContext.Provider
 			value={{
