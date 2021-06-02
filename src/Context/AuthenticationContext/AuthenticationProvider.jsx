@@ -90,13 +90,12 @@ export const AuthenticationProvider = ({ children }) => {
 		try {
 			const { status } = await axios({
 				method: 'POST',
-				url: `${API_URL}/users/self`,
+				url: `${API_URL}/users/reset-password`,
 				data: {
 					email,
 					password,
 				},
 			});
-
 			if (status === 200) {
 				return { status };
 			}
