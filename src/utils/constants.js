@@ -1,3 +1,9 @@
 export const API_URL = 'https://uandistoreapi.herokuapp.com';
+export const SOCIAL_MEDIA_URL = 'https://u-and-i-talks.netlify.app';
+
 //dev url
 // export const API_URL = 'http://localhost:3000';
+// export const SOCIAL_MEDIA_URL = 'http://localhost:3000';
+export const SHARE_POST_TITLE = encodeURIComponent(
+	'Checkout this video from U&I video library I found it helpful',
+);
