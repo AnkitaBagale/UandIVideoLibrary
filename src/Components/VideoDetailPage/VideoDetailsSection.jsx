@@ -3,7 +3,11 @@ import { isAlreadyAdded } from '../../utils';
 import { AddToPlaylistContainer } from './AddToPlaylistContainer';
 import { useAuthentication, useStateContext } from '../../Context';
 import { addOrRemoveFromPlaylist } from '../utils';
-import { SHARE_POST_TITLE, SOCIAL_MEDIA_URL } from '../../utils/constants';
+import {
+	SHARE_POST_TITLE,
+	SOCIAL_MEDIA_URL,
+	VIDEO_LIB_APP_URL,
+} from '../../utils/constants';
 
 export const VideoDetailsSection = ({ video }) => {
 	const { state, dispatch } = useStateContext();
@@ -13,11 +17,9 @@ export const VideoDetailsSection = ({ video }) => {
 		state: { token },
 	} = useAuthentication();
 
-	const shareToUrl = `${SOCIAL_MEDIA_URL}/?video=${encodeURIComponent(
-		video._id,
-	)}&title=${SHARE_POST_TITLE} https://u-and-i-video-library.netlify.app/explore/${
-		video._id
-	}`;
+	const encodedVideoId = encodeURIComponent(video._id);
+
+	const shareToUrl = `${SOCIAL_MEDIA_URL}/?video=${encodedVideoId}&title=${SHARE_POST_TITLE} ${VIDEO_LIB_APP_URL}${encodedVideoId}`;
 
 	return (
 		<>

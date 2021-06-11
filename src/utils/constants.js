@@ -7,3 +7,7 @@ export const SOCIAL_MEDIA_URL = 'https://u-and-i-talks.netlify.app';
 export const SHARE_POST_TITLE = encodeURIComponent(
 	'Checkout this video from U&I video library I found it helpful',
 );
+
+export const VIDEO_LIB_APP_URL = encodeURIComponent(
+	'https://deploy-preview-1--u-and-i-video-library.netlify.app/explore/',
+);
