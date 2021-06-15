@@ -9,5 +9,5 @@ export const SHARE_POST_TITLE = encodeURIComponent(
 );
 
 export const VIDEO_LIB_APP_URL = encodeURIComponent(
-	'https://deploy-preview-1--u-and-i-video-library.netlify.app/explore/',
+	'https://u-and-i-video-library.netlify.app/explore/',
 );
