@@ -4,6 +4,43 @@ import { useAuthentication } from '../../Context';
 import './css/nav.css';
 import { SearchBar } from './SearchBar';
 
+const navItems = [
+	{
+		item: 'Home',
+		link: '/',
+		icon: <i className='nav-icon fas fa-home'></i>,
+		hideInDesktop: true,
+	},
+	{
+		item: 'Explore',
+		link: '/explore',
+		icon: <i className='nav-icon hide-in-desktop fas fa-compass'></i>,
+	},
+	{
+		item: 'Playlist',
+		link: '/explore/playlists',
+		icon: <i className='nav-icon hide-in-desktop fas fa-folder-plus'></i>,
+	},
+	{
+		item: 'Likes',
+		link: '/explore/liked',
+		hideInDesktop: true,
+		icon: <i className='nav-icon hide-in-desktop fas fa-thumbs-up'></i>,
+	},
+	{
+		item: 'Watch Later',
+		link: '/explore/watchlater',
+		hideInDesktop: true,
+		icon: <i className='nav-icon hide-in-desktop fas fa-bookmark'></i>,
+	},
+	{
+		item: 'History',
+		link: '/explore/history',
+		hideInDesktop: true,
+		icon: <i className='nav-icon hide-in-desktop fas fa-clock'></i>,
+	},
+];
+
 export const Nav = () => {
 	const [navOpen, setNavOpen] = useState(false);
 
@@ -61,75 +98,24 @@ export const Nav = () => {
 						</Link>
 					</li>
 
-					<li className='list-inline-item hide-in-desktop'>
-						<NavLink
-							to='/'
-							end
-							activeClassName='primary-text-color'
-							className='link-no-style'>
-							<span className='padding-right-1rem-in-mobile'>
-								<i className='nav-icon fas fa-home'></i>
-							</span>
-							<span>Home</span>
-						</NavLink>
-					</li>
-
-					<li className='list-inline-item'>
-						<NavLink
-							to='/explore'
-							end
-							activeClassName='primary-text-color'
-							className='link-no-style'>
-							<span className='padding-right-1rem-in-mobile'>
-								<i className='nav-icon hide-in-desktop fas fa-compass'></i>
-							</span>
-							<span>Explore</span>
-						</NavLink>
-					</li>
-					<li className='list-inline-item'>
-						<NavLink
-							to='/explore/playlists'
-							activeClassName='primary-text-color'
-							className='link-no-style'>
-							<span className='padding-right-1rem-in-mobile'>
-								<i className='nav-icon hide-in-desktop fas fa-folder-plus'></i>
-							</span>
-							<span>Playlists</span>
-						</NavLink>
-					</li>
-					<li className='list-inline-item'>
-						<NavLink
-							to='/explore/liked'
-							activeClassName='primary-text-color'
-							className='link-no-style'>
-							<span className='padding-right-1rem-in-mobile'>
-								<i className='nav-icon hide-in-desktop fas fa-thumbs-up'></i>
-							</span>
-							<span>Likes</span>
-						</NavLink>
-					</li>
-					<li className='list-inline-item'>
-						<NavLink
-							to='/explore/watchlater'
-							activeClassName='primary-text-color'
-							className='link-no-style'>
-							<span className='padding-right-1rem-in-mobile'>
-								<i className='nav-icon hide-in-desktop fas fa-bookmark'></i>
-							</span>
-							<span>Watch Later</span>
-						</NavLink>
-					</li>
-					<li className='list-inline-item'>
-						<NavLink
-							to='/explore/history'
-							activeClassName='primary-text-color'
-							className='link-no-style'>
-							<span className='padding-right-1rem-in-mobile'>
-								<i className='nav-icon hide-in-desktop fas fa-clock'></i>
-							</span>
-							<span>History</span>
-						</NavLink>
-					</li>
+					{navItems.map(({ item, link, hideInDesktop, icon }) => {
+						return (
+							<li
+								key={item}
+								className={`list-inline-item ${
+									hideInDesktop ? 'hide-in-desktop' : ''
+								}`}>
+								<NavLink
+									to={link}
+									end
+									activeClassName='primary-text-color'
+									className='link-no-style'>
+									<span className='padding-right-1rem-in-mobile'>{icon}</span>
+									<span>{item}</span>
+								</NavLink>
+							</li>
+						);
+					})}
 				</ul>
 			</div>
 
@@ -147,26 +133,6 @@ export const Nav = () => {
 							</span>
 						</Link>
 					</li>
-					{/* Keeping this commented to use it after language context feat is done
-          <li>
-              <button className="language-icon link-no-style dropdown-list-container" onClick={()=>{setLanguageDropdown(flag=>!flag)}}>
-                <img src={languageChangeSvg} alt="change language" />
-                <span className="dropdown-list" style={{display: languageDropdownOpen?"block":"none"}}> 
-                    <ul className="list-style-none text-left">
-                        {
-                            allLanguages.map((lang) => 
-                            <li key={lang} className={language===lang?"dropdown-item primary-text-color":"dropdown-item"} 
-                                            onClick={()=>{
-                                                setLanguage(lang);
-                                            }}>
-                            {lang}
-                            </li>)
-                        }
-                    </ul>
-
-                </span>
-                </button>
-        </li> */}
 				</ul>
 			</div>
 		</nav>
