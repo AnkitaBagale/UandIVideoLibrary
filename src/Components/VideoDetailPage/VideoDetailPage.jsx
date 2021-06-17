@@ -55,13 +55,15 @@ export const VideoDetailPage = () => {
 								width={'100%'}
 								height={'100%'}
 								onStart={() => {
-									addOrRemoveFromPlaylist({
-										playlistId: watchHistory._id,
-										dispatch,
-										videoId: id,
-										type: 'SET_HISTORY',
-										token,
-									});
+									if (token) {
+										addOrRemoveFromPlaylist({
+											playlistId: watchHistory._id,
+											dispatch,
+											videoId: id,
+											type: 'SET_HISTORY',
+											token,
+										});
+									}
 								}}
 							/>
 						</div>

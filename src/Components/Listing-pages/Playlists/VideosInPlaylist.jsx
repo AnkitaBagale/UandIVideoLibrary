@@ -63,8 +63,8 @@ export const VideosInPlaylist = () => {
 	return (
 		<>
 			{playlist ? (
-				<div className='grid-50-50-layout padding-around-1rem margin-auto margin-top-3rem'>
-					<div className='padding-left-1rem  padding-right-1rem'>
+				<div className='grid-30-70-layout margin-auto margin-top-3rem'>
+					<div className='plyalist-details-container'>
 						<img
 							className='img-responsive'
 							src='https://i.postimg.cc/TwsBcV04/jess-bailey-l3-N9-Q27z-ULw-unsplash.jpg'
@@ -75,7 +75,7 @@ export const VideosInPlaylist = () => {
 							{isEditMode ? (
 								playlistTitleUpdateForm
 							) : (
-								<h2 className='h4 padding-top-1rem'>{playlist.title}</h2>
+								<h2 className='h5 padding-top-1rem'>{playlist.title}</h2>
 							)}
 
 							<p>{playlist.videoList.length} videos</p>

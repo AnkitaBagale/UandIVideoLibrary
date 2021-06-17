@@ -22,7 +22,7 @@ export const ProfilePage = () => {
 							Authorization: `Bearer ${token}`,
 						},
 					});
-					console.log(response);
+
 					if (status === 200) {
 						dispatch({
 							type: 'SET_USER_DETAILS',

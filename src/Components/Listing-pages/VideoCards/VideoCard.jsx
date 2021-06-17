@@ -3,6 +3,12 @@ import '../styles.css';
 import { ActionButtonsOfVideoCard } from './ActionButtonsOfVideoCard';
 
 export const VideoCard = ({ video }) => {
+	const getVideoTitleTrimmedToFiftyChar = (title) => {
+		if (title.length < 40) {
+			return title;
+		}
+		return title.substr(0, 38) + '..';
+	};
 	return (
 		<div>
 			<div className='card-vertical'>
@@ -28,7 +34,9 @@ export const VideoCard = ({ video }) => {
 						to={`/explore/${video._id}`}
 						className='link-no-style text-container'>
 						<div className='text-container-title'>
-							<h6 className='body-cp-rg'>{video.name}</h6>
+							<h6 className='body-cp-md video-title'>
+								{getVideoTitleTrimmedToFiftyChar(video.name)}
+							</h6>
 						</div>
 						<div className='text-container-desc'>
 							<p className='body-cp-md secondary-text-color text-light-weight'>

@@ -83,7 +83,6 @@ export function App() {
 					toast.error('Please refresh the page!');
 				}
 			})();
-		} else {
 		}
 	}, [token]);
 
