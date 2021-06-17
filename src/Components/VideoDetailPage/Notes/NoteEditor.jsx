@@ -42,7 +42,7 @@ export const NoteEditor = ({
 
 	const editOrAddNote = () => {
 		if (!token) {
-			toast.info('Sign up to proceed !', toastOptions);
+			toast.info('Please login to proceed !', toastOptions);
 			return;
 		}
 		if (noteState.title !== '') {

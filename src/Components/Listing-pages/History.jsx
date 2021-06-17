@@ -16,15 +16,15 @@ export const History = () => {
 
 	return (
 		<>
-			<div className='grid-50-50-layout padding-around-1rem margin-auto margin-top-3rem'>
-				<div className='padding-left-1rem  padding-right-1rem'>
+			<div className='grid-30-70-layout margin-auto margin-top-3rem'>
+				<div className='plyalist-details-container'>
 					<img
 						className='img-responsive'
 						src='https://i.postimg.cc/TwsBcV04/jess-bailey-l3-N9-Q27z-ULw-unsplash.jpg'
 						alt='watchhistory'
 					/>
 					<div className='text-container'>
-						<h2 className='h4 padding-top-1rem'>Learning History</h2>
+						<h2 className='h5 padding-top-1rem'>Learning History</h2>
 						<p>{watchHistory.videoList.length} videos</p>
 						<div className='CTA_Container'>
 							<button

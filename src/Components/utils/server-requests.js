@@ -10,61 +10,80 @@ const successToastOptions = {
 const informToastOptions = { autoClose: 2000, className: 'toast toast-inform' };
 
 export const addOrRemoveFromPlaylist = async ({
+	type,
 	playlistId,
 	dispatch,
 	videoId,
-	type,
 	token,
 }) => {
-	try {
-		const toastId = toast.info('Updating Your Playlist..', informToastOptions);
-		console.log({ playlistId });
-		const {
-			data: { response },
-		} = await axios({
-			method: 'POST',
-			url: `${API_URL}/playlists/${playlistId}/videos`,
-			data: {
-				videoId,
-				date: new Date().toDateString(),
-			},
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
-		dispatch({ type, payload: response });
-		toast.dismiss(toastId);
-	} catch (error) {
-		console.error(error);
-		toast.error('Please try later !', errorToastOptions);
+	if (token) {
+		try {
+			let toastId;
+			if (type !== 'SET_HISTORY') {
+				toastId = toast.info('Updating Your Playlist..', informToastOptions);
+			}
+
+			const {
+				data: { response },
+			} = await axios({
+				method: 'POST',
+				url: `${API_URL}/playlists/${playlistId}/videos`,
+				data: {
+					videoId,
+					date: new Date().toDateString(),
+				},
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			dispatch({ type, payload: response });
+
+			toast.dismiss(toastId);
+		} catch (error) {
+			console.error(error);
+			toast.error('Please try later !', errorToastOptions);
+		}
+	} else {
+		toast.info('Please login to continue!', informToastOptions);
 	}
 };
 
 export const updatePlaylistInformation = async ({
+	type,
 	playlistId,
 	title,
 	dispatch,
 	token,
 }) => {
-	try {
-		const toastId = toast.info('Updating Your Playlist..', informToastOptions);
-		const {
-			data: { response },
-		} = await axios({
-			method: 'POST',
-			url: `${API_URL}/playlists/${playlistId}`,
-			data: {
-				title,
-			},
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
-		dispatch({ type: 'UPDATE_PLAYLIST', payload: response });
-		toast.dismiss(toastId);
-	} catch (error) {
-		console.error(error);
-		toast.error('Please try later !', errorToastOptions);
+	if (token) {
+		try {
+			let toastId;
+			if (type !== 'history') {
+				toastId = toast.info('Updating Your Playlist..', informToastOptions);
+			}
+			const {
+				data: { response },
+			} = await axios({
+				method: 'POST',
+				url: `${API_URL}/playlists/${playlistId}`,
+				data: {
+					title,
+				},
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			dispatch({ type: 'UPDATE_PLAYLIST', payload: response });
+
+			toast.dismiss(toastId);
+		} catch (error) {
+			console.error(error);
+			if (type !== 'history') {
+				toast.error('Please try later !', errorToastOptions);
+			}
+		}
+	} else {
+		toast.info('Please log in to continue!', informToastOptions);
 	}
 };
 
@@ -95,28 +114,32 @@ export const createNewPlaylist = async ({
 	token,
 	setPlaylistTitle,
 }) => {
-	try {
-		const {
-			data: { response },
-		} = await axios({
-			method: 'POST',
-			url: `${API_URL}/playlists`,
-			data: {
-				title,
-				thumbnail: video.thumbnail,
-				videoList: [{ videoId: video._id, date: new Date().toDateString() }],
-			},
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+	if (token) {
+		try {
+			const {
+				data: { response },
+			} = await axios({
+				method: 'POST',
+				url: `${API_URL}/playlists`,
+				data: {
+					title,
+					thumbnail: video.thumbnail,
+					videoList: [{ videoId: video._id, date: new Date().toDateString() }],
+				},
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
 
-		dispatch({ type: 'ADD_NEW_PLAYLIST', payload: response });
-		setPlaylistTitle('');
-		toast.success('Playlist created and video added !', successToastOptions);
-	} catch (error) {
-		console.error(error);
-		toast.error('Please try later !', errorToastOptions);
+			dispatch({ type: 'ADD_NEW_PLAYLIST', payload: response });
+			setPlaylistTitle('');
+			toast.success('Playlist created and video added !', successToastOptions);
+		} catch (error) {
+			console.error(error);
+			toast.error('Please try later !', errorToastOptions);
+		}
+	} else {
+		toast.info('Please log in to continue!', informToastOptions);
 	}
 };
 
@@ -158,7 +181,6 @@ export const getNotesForVideo = async ({ token, videoId, setNotes }) => {
 		setNotes(response);
 	} catch (error) {
 		console.error(error);
-		toast.error('Please refresh page !', errorToastOptions);
 	}
 };
 

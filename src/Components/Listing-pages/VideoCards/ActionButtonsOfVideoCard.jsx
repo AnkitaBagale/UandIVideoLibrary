@@ -29,7 +29,7 @@ export const ActionButtonsOfVideoCard = ({ video }) => {
 				token,
 			});
 		} else {
-			toast.info('Sign up to proceed !', toastOptions);
+			toast.info('Please login to continue !', toastOptions);
 		}
 	};
 	return (

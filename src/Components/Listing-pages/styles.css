@@ -1,6 +1,19 @@
 .badge-dot-to-separate {
 	margin: 0 0.2rem;
 }
+.grid-30-70-layout {
+	max-width: 65rem;
+	padding: 2rem 1rem;
+}
+.plyalist-details-container {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	padding-top: 1rem;
+}
+.plyalist-details-container .text-container {
+	padding: 0;
+}
+
 .video-info {
 	display: flex;
 }
@@ -43,10 +56,14 @@
 }
 .content-area-beside-sidebar {
 	width: calc(100% - 6.25rem);
+	padding: 0 1rem 1rem;
 }
 
 .video-info {
 	position: relative;
+}
+.video-info .text-container {
+	padding: 0.75rem 1rem 1rem 0.5rem;
 }
 
 .more-options-button {
@@ -65,18 +82,28 @@
 	max-width: 65rem;
 }
 
-@media screen and (max-width: 1024px) {
-	.content-area-beside-sidebar {
-		width: 100%;
-	}
-	.explore-container {
-		padding: 0.5rem;
-	}
-}
 .page-title {
 	margin-top: 3rem;
 	padding: 0 1rem;
 }
+
+.video-title {
+	line-height: 1.25rem;
+}
+
+@media screen and (max-width: 1024px) {
+	.content-area-beside-sidebar {
+		width: 100%;
+		padding: 0;
+	}
+	.explore-container {
+		padding: 0.5rem;
+	}
+	.grid-30-70-layout {
+		padding: 0;
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.grid-4-column-layout {
 		grid-template-columns: 1fr;

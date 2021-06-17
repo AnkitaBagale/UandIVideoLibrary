@@ -20,7 +20,7 @@ export const VideoCardHorizontal = ({ video }) => {
 	};
 
 	return (
-		<div className='card-horizontal default-container bg-light-pink'>
+		<div className='card-horizontal default-container bg-light-pink shadow-box'>
 			<div className='image-container'>
 				<img
 					className='img-responsive card-img'
