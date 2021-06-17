@@ -17,7 +17,7 @@ const navItems = [
 		icon: <i className='nav-icon hide-in-desktop fas fa-compass'></i>,
 	},
 	{
-		item: 'Playlist',
+		item: 'Playlists',
 		link: '/explore/playlists',
 		icon: <i className='nav-icon hide-in-desktop fas fa-folder-plus'></i>,
 	},
