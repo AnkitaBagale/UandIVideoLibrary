@@ -27,17 +27,26 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useAuthentication, useStateContext } from './Context';
 import { API_URL } from './utils';
+import { setupAuthenticationErrorHandler } from './Context/AuthenticationContext/utils/setupAthenticationErrorHandler';
 
 export function App() {
 	const { dispatch } = useStateContext();
+
+	const navigate = useNavigate();
+
 	const {
 		state: { token },
+		logOutUser,
 	} = useAuthentication();
+
+	useEffect(() => {
+		setupAuthenticationErrorHandler(logOutUser, navigate);
+	}, []);
 
 	useEffect(() => {
 		(async () => {

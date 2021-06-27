@@ -110,9 +110,7 @@ export const AuthenticationProvider = ({ children }) => {
 		localStorage?.removeItem('session');
 		dispatch({ type: 'LOGOUT_USER' });
 	};
-	useEffect(() => {
-		setupAuthenticationErrorHandler(logOutUser, navigate);
-	}, []);
+
 	return (
 		<AuthenticationContext.Provider
 			value={{
