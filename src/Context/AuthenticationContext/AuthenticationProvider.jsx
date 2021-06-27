@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../utils';
 import { authenticationReducer } from './authentication.reducer';
-import { setupAuthenticationErrorHandler } from './utils/setupAthenticationErrorHandler';
 
 const AuthenticationContext = createContext();
 
