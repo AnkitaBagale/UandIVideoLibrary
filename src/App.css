@@ -1,10 +1,15 @@
 :root {
 	--bg-light-pink: #fff7f9;
 	--bg-lesslight-pink: #ffd9e2;
+	--dark-secondary-text-color: #282c3f;
 }
 
 * {
 	box-sizing: border-box;
+}
+
+body {
+	color: var(--dark-secondary-text-color);
 }
 
 .bg-light-pink {
