@@ -90,6 +90,9 @@
 .video-title {
 	line-height: 1.25rem;
 }
+.margin-top-0 {
+	margin-top: 0;
+}
 
 @media screen and (max-width: 1024px) {
 	.content-area-beside-sidebar {

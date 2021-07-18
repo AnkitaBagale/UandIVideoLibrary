@@ -70,7 +70,30 @@ export const Login = () => {
 							/>
 						</div>
 
-						<button className='btn btn-solid-primary' type='submit'>
+						<button
+							className='btn btn-outline-primary'
+							type='button'
+							onClick={(event) => {
+								formDispatch({ type: 'SET_EMAIL', payload: 'test@test.com' });
+								formDispatch({
+									type: 'SET_PASSWORD',
+									payload: 'Test1234',
+								});
+								loginFormSubmit(event, {
+									loginUser,
+									setError,
+									setLoading,
+									email: 'test@test.com',
+									password: 'Test1234',
+									from: navigateToPathState,
+								});
+							}}>
+							Login With Test Credentials
+						</button>
+
+						<button
+							className='btn btn-solid-primary margin-top-0'
+							type='submit'>
 							LOGIN
 						</button>
 
@@ -79,16 +102,6 @@ export const Login = () => {
 								<i className='fas fa-exclamation-circle'></i>
 							</span>
 							{error}
-						</div>
-
-						<div className='body-cp-md padding-bottom-1rem'>
-							Forgot your password?{' '}
-							<Link
-								to='/forgot'
-								state={navigateToPathState}
-								className='link-text link-text-primary'>
-								Reset here
-							</Link>
 						</div>
 
 						<div className='body-cp-md padding-bottom-1rem'>

@@ -12,7 +12,6 @@ import {
 	HomePage,
 	Nav,
 	Footer,
-	ForgotPasswordPage,
 	Login,
 	PrivateRoute,
 	Profile,
@@ -129,7 +128,6 @@ export function App() {
 					<Route path='/explore/:id' element={<VideoDetailPage />} />
 
 					<Route path='/login' element={<Login />} />
-					<Route path='/forgot' element={<ForgotPasswordPage />} />
 					<Route path='/signup' element={<SignUp />} />
 
 					<Route path='*' element={<ErrorPage />} />

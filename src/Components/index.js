@@ -13,7 +13,6 @@ export { HomePage } from './HomePage';
 export { Nav } from './Header';
 export { Footer } from './Footer';
 export {
-	ForgotPasswordPage,
 	Login,
 	PrivateRoute,
 	ProfilePage,
