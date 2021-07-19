@@ -43,6 +43,14 @@ export const SearchBar = () => {
 		})
 		.filter((item) => item !== undefined);
 
+	const searchSubmit = () => {
+		if (searchTerm !== '') {
+			navigate(`/search?searchTerm=${encodeURIComponent(searchTerm)}`);
+			setSearchTerm('');
+			setSearchIconActive(false);
+		}
+	};
+
 	return (
 		<>
 			<div
@@ -51,13 +59,7 @@ export const SearchBar = () => {
 				<button
 					className='search-bar-btn link-no-style'
 					type='submit'
-					onClick={() => {
-						if (searchTerm !== '') {
-							navigate(`/search?searchTerm=${encodeURIComponent(searchTerm)}`);
-							setSearchTerm('');
-							setSearchIconActive(false);
-						}
-					}}>
+					onClick={searchSubmit}>
 					<i className='fa fa-search'></i>
 				</button>
 				<input
@@ -67,6 +69,11 @@ export const SearchBar = () => {
 					onFocus={() => setSearchIconActive(true)}
 					onChange={(e) => setSearchTerm(e.target.value)}
 					value={searchTerm}
+					onKeyUp={(e) => {
+						if (e.key === 'Enter') {
+							searchSubmit();
+						}
+					}}
 				/>
 				{searchTerm !== '' && (
 					<button

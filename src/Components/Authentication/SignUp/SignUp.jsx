@@ -180,7 +180,8 @@ export const SignUp = () => {
 						<>
 							<h1 className='h4 text-center'>SIGN UP</h1>
 							<p className='text-center padding-bottom-1rem'>
-								Fill below form to sign up and enjoy special offers in U&I store
+								Fill below form to sign up and enjoy all the benefits in U
+								<span className='primary-text-color body-cp-sm'>&</span>I Videos
 							</p>
 							<form className='submit-form-example display-flex-column'>
 								<div className='row'>
