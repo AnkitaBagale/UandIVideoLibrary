@@ -42,7 +42,6 @@ export const AuthenticationProvider = ({ children }) => {
 				localStorage?.setItem(
 					'session',
 					JSON.stringify({
-						login: true,
 						userName: firstname,
 						token: token,
 					}),
@@ -62,10 +61,20 @@ export const AuthenticationProvider = ({ children }) => {
 		}
 	};
 
-	const signUpNewUser = async ({ email, password, firstname, lastname }) => {
+	const signUpNewUser = async ({
+		email,
+		password,
+		firstname,
+		lastname,
+		from,
+		setLoading,
+		setError,
+	}) => {
 		try {
 			const {
-				data: { message },
+				data: {
+					response: { firstname: userName, token },
+				},
 				status,
 			} = await axios({
 				method: 'POST',
@@ -78,29 +87,30 @@ export const AuthenticationProvider = ({ children }) => {
 				},
 			});
 
-			return { status };
-		} catch (error) {
-			console.log(error);
-			return error.response;
-		}
-	};
+			if (status === 201) {
+				localStorage?.setItem(
+					'session',
+					JSON.stringify({
+						userName,
+						token: token,
+					}),
+				);
 
-	const updateUserDetails = async ({ email, password }) => {
-		try {
-			const { status } = await axios({
-				method: 'POST',
-				url: `${API_URL}/users/reset-password`,
-				data: {
-					email,
-					password,
-				},
-			});
-			if (status === 200) {
-				return { status };
+				dispatch({
+					type: 'LOGIN_USER',
+					payload: { userName, token },
+				});
+				axios.defaults.headers.common['Authorization'] = token;
+				setLoading(false);
+				navigate(from);
 			}
 		} catch (error) {
 			console.log(error);
-			return error.response;
+			setLoading(false);
+			setError(
+				error?.response?.data?.message ||
+					'Something went wrong, please try again!',
+			);
 		}
 	};
 
@@ -116,7 +126,6 @@ export const AuthenticationProvider = ({ children }) => {
 				loginUser,
 				logOutUser,
 				signUpNewUser,
-				updateUserDetails,
 				state,
 				dispatch,
 			}}>
