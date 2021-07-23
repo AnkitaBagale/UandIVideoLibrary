@@ -23,17 +23,17 @@ export const LikedVideos = () => {
 					/>
 					<div className='text-container'>
 						<h2 className='h5 padding-top-1rem'>Liked Videos</h2>
-						<p>{likedVideos.videoList.length} videos</p>
+						<p>{likedVideos?.videoList?.length} videos</p>
 					</div>
 					<div className='filter-divider-line hide-in-desktop'></div>
 				</div>
 				<ul className='stacked-list padding-around-1rem scrollbar-styled height-90vh'>
-					{likedVideos.videoList.length === 0 ? (
+					{likedVideos?.videoList?.length === 0 ? (
 						<li className='text-center p text-regular-weight'>
 							No liked videos
 						</li>
 					) : (
-						likedVideos.videoList.map(({ videoId: video, date }) => (
+						likedVideos?.videoList?.map(({ videoId: video, date }) => (
 							<li
 								key={video._id}
 								className='badge-container'
@@ -47,7 +47,7 @@ export const LikedVideos = () => {
 											playlistId: likedVideos._id,
 											dispatch,
 											videoId: video._id,
-											type: '	',
+											type: 'SET_LIKED_VIDEOS',
 											token,
 										})
 									}

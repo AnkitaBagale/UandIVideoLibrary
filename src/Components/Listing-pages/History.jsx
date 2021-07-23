@@ -25,7 +25,7 @@ export const History = () => {
 					/>
 					<div className='text-container'>
 						<h2 className='h5 padding-top-1rem'>Learning History</h2>
-						<p>{watchHistory.videoList.length} videos</p>
+						<p>{watchHistory?.videoList?.length} videos</p>
 						<div className='CTA_Container'>
 							<button
 								className='btn btn-solid-secondary'
@@ -43,12 +43,12 @@ export const History = () => {
 					<div className='filter-divider-line hide-in-desktop'></div>
 				</div>
 				<ul className='stacked-list padding-around-1rem scrollbar-styled height-90vh'>
-					{watchHistory.videoList.length === 0 ? (
+					{watchHistory?.videoList?.length === 0 ? (
 						<li className='text-center p text-regular-weight'>
 							No watched videos
 						</li>
 					) : (
-						watchHistory.videoList.map(({ videoId: video, date }) => (
+						watchHistory?.videoList?.map(({ videoId: video, date }) => (
 							<li
 								key='video._id'
 								className='badge-container'

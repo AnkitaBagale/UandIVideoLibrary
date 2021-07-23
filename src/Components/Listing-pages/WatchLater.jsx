@@ -24,17 +24,17 @@ export const WatchLater = () => {
 					/>
 					<div className='text-container'>
 						<h2 className='h5 padding-top-1rem'>Saved Videos to Watch Later</h2>
-						<p>{watchLater.videoList.length} videos</p>
+						<p>{watchLater?.videoList?.length} videos</p>
 					</div>
 					<div className='filter-divider-line hide-in-desktop'></div>
 				</div>
 				<ul className='stacked-list padding-around-1rem scrollbar-styled height-90vh'>
-					{watchLater.videoList.length === 0 ? (
+					{watchLater?.videoList?.length === 0 ? (
 						<li className='text-center p text-regular-weight'>
 							No saved videos
 						</li>
 					) : (
-						watchLater.videoList.map(({ videoId: video, date }) => (
+						watchLater?.videoList?.map(({ videoId: video, date }) => (
 							<li
 								key={video._id}
 								className='badge-container'

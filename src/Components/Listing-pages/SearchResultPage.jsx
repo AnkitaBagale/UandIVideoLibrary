@@ -27,7 +27,7 @@ export const SearchResultPage = () => {
 						<span className='text-light-weight'> - {numberOfItems} items</span>
 					</h1>
 					<div className='grid-4-column-layout grid-right-of-filter padding-around-1rem'>
-						{filterdData.map((video) => {
+						{filterdData?.map((video) => {
 							return <VideoCard key={video._id} video={video} />;
 						})}
 					</div>

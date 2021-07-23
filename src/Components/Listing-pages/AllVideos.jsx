@@ -15,7 +15,7 @@ export const AllVideos = () => {
 	return (
 		<>
 			<div className='CTA-Container padding-around-1rem'>
-				{types.map((type) => (
+				{types?.map((type) => (
 					<Link
 						to={{ search: `?type=${encodeURI(type)}` }}
 						className={`btn btn-outline-primary btn-rounded-corners ${
@@ -27,13 +27,13 @@ export const AllVideos = () => {
 				))}
 			</div>
 
-			{state.videos.length !== 0 ? (
+			{state?.videos?.length !== 0 ? (
 				<div className='grid-4-column-layout grid-right-of-filter padding-around-1rem'>
 					{searchQuery === 'All'
-						? state.videos.map((video) => (
+						? state?.videos?.map((video) => (
 								<VideoCard key={video._id} video={video} />
 						  ))
-						: state.videos
+						: state?.videos
 								.filter((item) => item.type === searchQuery)
 								.map((video) => <VideoCard key={video._id} video={video} />)}
 				</div>

@@ -36,6 +36,7 @@ export const addOrRemoveFromPlaylist = async ({
 					Authorization: `Bearer ${token}`,
 				},
 			});
+			console.log({ response });
 			dispatch({ type, payload: response });
 
 			toast.dismiss(toastId);
