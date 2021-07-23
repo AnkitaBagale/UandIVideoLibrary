@@ -43,13 +43,15 @@ export const WatchLater = () => {
 									<VideoCardHorizontal video={{ ...video, date }} />
 								</Link>
 								<button
-									onClick={() => ({
-										playlistId: watchLater._id,
-										dispatch,
-										videoId: video._id,
-										type: 'SET_WATCH_LATER',
-										token,
-									})}
+									onClick={() =>
+										addOrRemoveFromPlaylist({
+											playlistId: watchLater._id,
+											dispatch,
+											videoId: video._id,
+											type: 'SET_WATCH_LATER',
+											token,
+										})
+									}
 									className='btn btn-icon-secondary margin-0 btn-sm-size badge-btn'>
 									<i className='fas fa-trash-alt btn-icon'></i>
 								</button>
